@@ -1,0 +1,74 @@
+spriteTypes = {
+	spriteType = { # already in game but not used
+		name = "GFX_report_event_communists_cheer"
+		texturefile = "gfx/event_pictures/report_event_communists_cheer.dds"
+	}
+
+	spriteType = { # already in game but not used
+		name = "GFX_report_event_communist_leader"
+		texturefile = "gfx/event_pictures/report_event_communist_leader.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_news_event_lenin_bury"
+		texturefile = "gfx/events/news_event_lenin_bury.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_news_event_stalin_resigns"
+		texturefile = "gfx/events/news_event_stalin_resigns.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_event_setting_sun"
+		texturefile = "gfx/events/event_setting_sun.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_event_cnt_fai"
+		texturefile = "gfx/events/event_cnt_fai.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_event_stalin_writing"
+		texturefile = "gfx/events/event_stalin_writing.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_event_iww"
+		texturefile = "gfx/events/event_iww.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_event_communist_international"
+		texturefile = "gfx/events/event_communist_international.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_event_coronation_of_king"
+		texturefile = "gfx/events/event_coronation_of_king.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_event_coronation_of_china"
+		texturefile = "gfx/events/event_coronation_of_china.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_event_coronation_of_queen"
+		texturefile = "gfx/events/event_coronation_of_queen.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_event_papal_conclave"
+		texturefile = "gfx/events/event_papal_conclave.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_news_event_nazi_war_crime_trial"
+		texturefile = "gfx/events/news_event_nazi_war_crime_trial.dds"
+	}
+}
+
+
+

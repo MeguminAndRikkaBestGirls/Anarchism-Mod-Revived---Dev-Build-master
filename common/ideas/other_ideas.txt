@@ -1,0 +1,66 @@
+ideas = {
+	country = {
+		idea_generic_social_democracy = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			removal_cost = -1
+
+			picture = generic_pp_unity_bonus
+
+			modifier = {
+				stability_weekly = 0.001
+				min_export = -0.05
+				production_speed_buildings_factor = 0.05
+				economy_cost_factor = -0.25
+			}
+		}
+		
+		idea_generic_centrism = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			removal_cost = -1
+
+			picture = generic_pp_unity_bonus
+
+			modifier = {
+				political_advisor_cost_factor = -0.25
+				opinion_gain_monthly_factor = 0.1
+				trade_opinion_factor = 0.1
+				trade_laws_cost_factor = -0.25
+			}
+		}
+		
+		idea_generic_conservative = {
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			removal_cost = -1
+
+			picture = generic_pp_unity_bonus
+
+			modifier = {
+				MONTHLY_POPULATION = 0.1
+				enemy_partisan_effect = -0.1 
+				industrial_capacity_factory = 0.05
+				mobilization_laws_cost_factor = -0.25
+			}
+		}
+	}
+}

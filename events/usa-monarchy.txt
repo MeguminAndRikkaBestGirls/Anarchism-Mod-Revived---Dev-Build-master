@@ -1,0 +1,111 @@
+###########################
+# USA Events
+###########################
+
+add_namespace = usm
+
+
+
+# USA becomes monarchist
+country_event = {
+	id = usm.1
+	title = usm.1.t
+	desc = usm.1.d
+	picture = GFX_event_coronation_of_king
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+
+	
+	# Lee Richardson Washington
+	option = {
+		name = Lee Washington	
+		create_country_leader = {
+			name = "Lee Washington the 1st"
+			desc = ""
+			picture = "Portrait_USA_monarchy_2.dds"
+			expire = "1965.1.1"
+			ideology = absolute_monarchy
+			traits = {
+			}
+		}
+	}
+	
+	# John Augustine Washington
+	option = {
+		name = John Washington
+		set_party_name = { ideology = monarchism long_name = USA_Washington_party_long name = USA_Washington_party }
+		create_country_leader = {
+			name = "John Washington The 1st"
+			desc = ""
+			picture = "Portrait_USA_monarchy_4.dds"
+			expire = "1965.1.1"
+			ideology = absolute_monarchy
+			traits = {
+			}
+		}
+	}
+	
+	# David Kalakaua Kawananakoa
+	option = {
+		name = David Kawananakoa
+		set_party_name = { ideology = monarchism long_name = USA_House_of_Kawananakoa_party_long name = USA_House_of_Kawananakoa_party }
+		create_country_leader = {
+			name = "David Kalakaua Kawananakoa"
+			desc = ""
+			picture = "Portrait_USA_David_Kalakaua_Kawananakoa.dds"
+			expire = "1965.1.1"
+			ideology = constitutional_monarchy
+			traits = {
+			}
+		}
+	}
+	# George Bolling Lee
+	option = {
+		name = George Bolling Lee
+		create_country_leader = {
+			name = "George Bolling Lee"
+			desc = ""
+			picture = "Portrait_USA_George_Bolling_Lee.dds"
+			expire = "1965.1.1"
+			ideology = constitutional_monarchy
+			traits = {
+			}
+		}
+	}
+}
+country_event = { # Industry for Government - USA civil war
+
+	id = usm.2
+	title = usm.2.t
+	desc = usm.2.d
+
+	picture = GFX_event_coronation_of_king
+	
+	fire_only_once = yes
+
+	trigger = {
+		AND = {
+			has_civil_war = yes
+			surrender_progress > 0.3
+		}
+	}
+
+	option = { # Search for old equipment
+		name = usm.2.a
+		add_equipment_to_stockpile = {
+    			type = infantry_equipment_0
+  			amount = 4000
+    			producer = USA
+		}
+		add_stability = -0.15
+		add_war_support = 0.2
+	}
+	option = { # Begin Compulsory Labour
+		name = usm.2.b
+		add_ideas = usa_desperate_defence
+		add_stability = -0.15
+		add_war_support = 0.2
+	}
+}

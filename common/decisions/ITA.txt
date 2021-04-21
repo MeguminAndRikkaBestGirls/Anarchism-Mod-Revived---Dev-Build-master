@@ -1,0 +1,18 @@
+poltical_actions = {
+
+selectthebourbon = {
+icon = decision_category_generic_propaganda
+}
+
+selectthecurrentpope = {
+
+	icon = decision_category_generic_propaganda
+	
+	allowed = {
+			original_tag = ITA
+		}
+}
+
+selectvictoremmanueliv = {
+icon = decision_category_generic_propaganda
+}

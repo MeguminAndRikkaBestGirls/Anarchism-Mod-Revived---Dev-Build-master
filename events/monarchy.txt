@@ -1,0 +1,1331 @@
+﻿###########################
+# Test Events
+###########################
+
+add_namespace = monarchy
+
+# death of Abdulmecid II
+country_event = {
+	id = monarchy.1
+	title = monarchy.1.t
+	desc = monarchy.1.d
+	picture = GFX_report_event_generic_funeral
+
+	trigger = {
+		original_tag = TUR
+		date > 1944.8.1
+		NOT = { has_country_flag = death_of_abdulmecid }
+		NOT = { has_government = monarchism }
+	}
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = { 
+		days = 365 
+	
+		modifier = {
+			factor = 0.8
+			date > 1938.12.1
+		}
+		modifier = {
+			factor = 0.5
+			date > 1939.1.1
+		}
+		modifier = { # historically died in Paris during the liberation of the city from Nazi occupation
+			factor = 0.2
+			NOT = { has_government = monarchism }
+			FRA = { has_capitulated = yes }
+		}
+		modifier = {
+			factor = 1.5
+			has_government = monarchism
+		}
+	}
+	
+	immediate = {
+		hidden_effect = {
+		if = {
+			limit = { has_government = monarchism }
+			kill_country_leader = yes
+		}
+		create_country_leader = {
+			name = "Ahmed IV"
+			picture = "Portrait_TUR_monarchy_2.dds"
+			expire = "1965.1.1" # died in 1954, next in line was Osman Fuad Efendi
+			ideology = caliphate
+			traits = {
+				
+			}
+		}
+		set_country_flag = death_of_abdulmecid
+		}
+	}
+	
+	# Replace monarchist leader
+	option = {
+		name = monarchy.1.a
+	}
+}
+
+# death of George VI
+country_event = {
+	id = monarchy.2
+	title = monarchy.2.t
+	desc = monarchy.2.d
+	picture = GFX_event_coronation_of_queen
+
+	trigger = {
+		OR = {
+			original_tag = ENG
+			original_tag = SAF
+			original_tag = CAN
+			original_tag = NZL
+			original_tag = AST
+		}
+		date > 1952.1.1
+		NOT = { has_country_flag = george_vi_died }
+	}
+	
+	immediate = { 
+		hidden_effect = {
+			set_country_flag = george_vi_died 
+			if = {
+				limit = { original_tag = ENG }
+				remove_ideas = ENG_george_vi
+				add_ideas = ENG_elizabeth_ii
+			}
+			if = {
+				limit = { has_government = monarchism }
+				kill_country_leader = yes
+			}
+			create_country_leader = {
+				name = "Elizabeth II"
+				picture = "gfx/leaders/ENG/Portrait_ENG_Monarchy_3.dds"
+				expire = "1965.1.1"    # still alive as far as I know
+				ideology = absolute_monarchy
+				traits = {
+					
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = { 
+		days = 30 
+	
+		modifier = {
+			factor = 0.5
+			date > 1952.6.1
+		}
+		modifier = {
+			factor = 0.2
+			date > 1953.1.1
+		}
+	}
+	
+	# Replace monarchist leader
+	option = {
+		name = monarchy.2.a
+	}
+}
+
+# death of Abdulmecid II
+country_event = {
+	id = monarchy.3
+	title = monarchy.3.t
+	desc = monarchy.3.d
+	picture = GFX_report_event_generic_funeral
+
+	trigger = {
+		original_tag = TUR
+		date > 1944.8.1
+		has_government = monarchism
+		NOT = { has_country_flag = death_of_abdulmecid }
+	}
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = { 
+		days = 365 
+	
+		modifier = {
+			factor = 0.8
+			date > 1938.12.1
+		}
+		modifier = {
+			factor = 0.5
+			date > 1939.1.1
+		}
+		modifier = { # historically died in Paris during the liberation of the city from Nazi occupation
+			factor = 0.2
+			NOT = { has_government = monarchism }
+			FRA = { has_capitulated = yes }
+		}
+		modifier = {
+			factor = 1.5
+			has_government = monarchism
+		}
+	}
+	
+	immediate = {
+		hidden_effect = {
+			if = {
+				limit = { has_government = monarchism }
+				kill_country_leader = yes
+			}
+			create_country_leader = {
+				name = "Ahmed Nihad"
+				picture = "Portrait_TUR_monarchy_2.dds"
+				expire = "1965.1.1" # died in 1954, next in line was Osman Fuad Efendi
+				ideology = caliphate
+				traits = {
+					
+				}
+			}
+			set_country_flag = death_of_abdulmecid
+		}
+	}
+	
+	# Replace monarchist leader
+	option = {
+		name = monarchy.3.a
+	}
+}
+
+# italy becomes monarchist
+country_event = {
+	id = monarchy.4
+	title = monarchy.4.t
+	desc = monarchy.4.desc
+	picture = GFX_event_coronation_of_king
+
+	trigger = {
+		original_tag = ITA
+		has_government = monarchism
+	}
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = { 
+		days = 2 
+	}
+	
+	# Victor Emmanuel
+	option = {
+		name = monarchy.4.a
+		set_country_flag = monarchy
+		
+		trigger = {
+			has_idea = victor_emmanuel
+		}
+		set_party_name = { ideology = monarchism long_name = ITA_savoy_party_long name = ITA_savoy_party }
+		retire_country_leader = yes
+		create_country_leader = {
+			name = "Victor Emmanuel III"
+			desc = "POLITICS_PIUS_XI_DESC"
+			picture = "gfx/leaders/ITA/Portrait_Italy_Victor_Emmanuel_III.dds"
+			expire = "1965.1.1"
+			ideology = absolute_monarchy
+			traits = {
+			}
+		}
+	}
+	
+	# Umberto
+	option = {
+		name = monarchy.4.b
+		set_country_flag = monarchy
+		
+		trigger = {
+			NOT = { has_idea = victor_emmanuel }
+		}
+		set_party_name = { ideology = monarchism long_name = ITA_savoy_party_long name = ITA_savoy_party }
+	}
+	
+	# Pius XI
+	option = {
+		name = monarchy.4.c
+		retire_country_leader = yes
+		create_country_leader = {
+			name = "Pius XI"
+			desc = "POLITICS_PIUS_XI_DESC"
+			picture = "gfx/leaders/ITA/Portrait_ITA_theocracy.dds"
+			expire = "1965.1.1"
+			ideology = papacy
+			traits = {
+				opponent_of_communism
+				opponent_of_fascism
+				opponent_of_anarchism
+			}
+		}
+		set_party_name = { ideology = monarchism long_name = ITA_theocratic_party_long name = ITA_theocratic_party }
+		set_cosmetic_tag = ITA_PAP
+		set_country_flag = theocracy
+		
+		trigger = {
+			date < 1939.2.10
+		}
+	}
+	
+	# Pius XII
+	option = {
+		name = monarchy.4.d
+		retire_country_leader = yes
+		create_country_leader = {
+			name = "Pius XII"
+			desc = "POLITICS_PIUS_XII_DESC"
+			picture = "gfx/leaders/ITA/Portrait_ITA_theocracy_2.dds"
+			expire = "1965.1.1"
+			ideology = papacy
+			traits = {
+			}
+		}
+		set_party_name = { ideology = monarchism long_name = ITA_theocratic_party_long name = ITA_theocratic_party }
+		set_cosmetic_tag = ITA_PAP
+		set_country_flag = theocracy
+		
+		trigger = {
+			date > 1939.2.9
+		}
+	}
+	
+	option = {
+		name = monarchy.4.e
+		retire_country_leader = yes
+		create_country_leader = {
+			name = "Ferdinand Pius I"
+			desc = "POLITICS_PIUS_XI_DESC"
+			picture = "gfx/leaders/ITA/Portrait_ITA_bourbon.dds"
+			expire = "1965.1.1"
+			ideology = absolute_monarchy
+			traits = {
+				opponent_of_communism
+				opponent_of_fascism
+				opponent_of_anarchism
+				dictator
+			}
+		}
+		set_party_name = { ideology = monarchism long_name = ITA_bourbon_party_long name = ITA_bourbon_party }
+		set_cosmetic_tag = ITA_bourbon
+		remove_ideas = victor_emmanuel
+		
+		trigger = {
+			date < 1939.2.10
+		}
+	}
+	
+	option = {
+		name = monarchy.4.f
+		remove_ideas = victor_emmanuel
+		country_event = { id = itarepublic.1 }
+	}
+}
+
+# Carol II abdicates
+country_event = {
+	id = monarchy.5
+	title = monarchy.5.t
+	desc = monarchy.5.d
+	picture = GFX_report_event_generic_funeral
+
+	trigger = {
+		original_tag = ROM
+		has_defensive_war_with = SOV
+		NOT = { has_country_flag = carol_ii_not_king }
+		NOT = { controls_state = 79 }
+	}
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = { 
+		days = 7
+	}
+	
+	immediate = {
+		hidden_effect = {
+		if = {
+			limit = { has_government = monarchism }
+			retire_country_leader = yes
+		}
+		
+		create_country_leader = {
+			name = "Michael I"
+			desc = "POLITICS_MICHAEL_I_DESC"
+			picture = "GFX_Portrait_romania_michael_i"
+			expire = "1965.1.1"
+			ideology = absolute_monarchy
+			traits = {
+				#
+			}
+		}
+		
+		if = {
+			limit = {
+				has_idea = ROM_king_carol_ii_hedonist
+			}
+			remove_ideas = ROM_king_carol_ii_hedonist
+		}
+		
+		set_country_flag = carol_ii_not_king
+		}
+	}
+	
+	# Replace monarchist leader
+	option = {
+		name = monarchy.5.a
+		
+	}
+}
+
+# monarchist Coup d'état
+country_event = {
+	id = monarchy.9
+	title = monarchy.9.t
+	desc = monarchy.9.d
+	picture = GFX_event_coronation_of_king
+	
+	trigger = {
+		has_idea_with_trait = monarchist_advocate
+		NOT = { has_government = monarchism }
+		has_country_flag = monarchy_government_support
+		monarchism > 0.3
+		is_puppet = no
+	}
+
+	mean_time_to_happen = {
+		days = 100
+		modifier = {
+			factor = 0.5
+			monarchism > 0.4
+		}
+	}
+
+	immediate = {
+		hidden_effect = { remove_ideas = monarchist_revolutionaries }
+	}
+	
+	option = {
+		name = monarchy.9.a
+		set_politics = {
+			ruling_party = monarchism
+			elections_allowed = no
+		}
+		add_timed_idea = { idea = crowned_monarch days = 730 }
+	}
+}
+
+# Kirill Vladimirovich dies
+country_event = {
+	id = monarchy.13
+	title = monarchy.13.t
+	desc = monarchy.13.d
+	picture = GFX_report_event_generic_funeral
+
+	trigger = {
+		original_tag = SOV
+		date > 1938.08.1
+	}
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = { 
+		days = 11
+	}
+	
+	immediate = {
+		hidden_effect = {
+		if = {
+			limit = { has_government = monarchism }
+			kill_country_leader = yes
+		}
+		
+		create_country_leader = {
+			name = "Vladimir Kirillovich"
+			desc = "POLITICS_Vladimir_Kirillovich_DESC"
+			picture = "Portrait_SOV_monarchy_2.dds"
+			expire = "1965.1.1"
+			ideology = tsar
+			traits = {
+				#
+			}
+		}
+		}
+	}
+	
+	# Replace monarchist leader
+	option = {
+		name = monarchy.13.a
+		
+		trigger = {
+			has_government = monarchism
+		}
+	}
+	
+	option = {
+		name = monarchy.13.b
+		
+		trigger = {
+			NOT = { has_government = monarchism }
+		}
+	}
+}
+
+# pius xii becomes pope
+country_event = {
+	id = monarchy.15
+	title = monarchy.15.t
+	desc = monarchy.15.d
+	picture = GFX_event_papal_conclave
+
+	trigger = {
+		original_tag = ITA
+		has_government = monarchism
+		has_country_flag = theocracy
+		date > 1939.2.1
+	}
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = { 
+		days = 8 
+	}
+	
+	immediate = {
+		hidden_effect = {
+		kill_country_leader = yes
+		create_country_leader = {
+			name = "Pius XII"
+			desc = "POLITICS_PIUS_XII_DESC"
+			picture = "gfx/leaders/ITA/Portrait_ITA_theocracy_2.dds"
+			expire = "1965.1.1"
+			ideology = papacy
+			traits = {
+			}
+		}
+		}
+	}
+	
+	# Pius XII
+	option = {
+		name = monarchy.15.a
+	}
+}
+
+# nationalism event for generic tree
+country_event = {
+	id = monarchy.16
+	title = monarchy.16.t
+	desc = monarchy.16.d
+	picture = GFX_event_coronation_of_king
+	
+	is_triggered_only = yes
+	
+	option = { # fascism
+		name = monarchy.16.a
+		add_ideas = nationalism
+		
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0                
+				has_government = monarchism
+			}
+			modifier = {
+				factor = 100   
+				has_government = fascism
+			}
+			modifier = {
+				factor = 100 
+				any_neighbor_country = {
+					has_government = fascism
+				}
+			}
+			modifier = {
+				factor = 0.5
+				any_neighbor_country = {
+					has_government = monarchism
+				}
+			}
+		}
+	}
+	
+	option = { # monarchism
+		name = monarchy.16.b
+		add_ideas = monarchist_nationalism
+		
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0                
+				has_government = fascism
+			}
+			modifier = {
+				factor = 100   
+				has_government = monarchism
+			}
+			modifier = {
+				factor = 100 
+				any_neighbor_country = {
+					has_government = monarchism
+				}
+			}
+			modifier = {
+				factor = 0.5
+				any_neighbor_country = {
+					has_government = fascism
+				}
+			}
+		}
+	}
+}
+
+# 1941.2.28: SPR Alfonso XIII -> Infanta Juan
+country_event = {
+	id = monarchy.17
+	title = monarchy.17.t
+	desc = monarchy.17.d
+	picture = GFX_report_event_generic_funeral
+
+	trigger = {
+		original_tag = SPR
+		date > 1941.2.1
+	}
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = { 
+		days = 30
+	}
+	
+	immediate = {
+	hidden_effect = {
+		if = {
+			limit = { has_government = monarchism }
+			kill_country_leader = yes
+		}
+		create_country_leader = {
+			name = "Infante Juan"
+			desc = ""
+			picture = "Portrait_SPR_monarchy_2.dds"
+			expire = "1965.1.1"
+			ideology = absolute_monarchy
+			traits = {
+			}
+		}
+		}
+	}
+	
+	option = {
+		name = monarchy.17.a
+		
+		trigger = {
+			has_government = monarchism
+		}
+	}
+	
+	option = {
+		name = monarchy.17.b
+		
+		trigger = {
+			OR = {
+				has_government = democratic
+				has_government = neutrality
+				has_government = fascism
+			}
+		}
+	}
+	
+	option = {
+		name = monarchy.17.c
+		
+		trigger = {
+			OR = {
+				has_government = communism
+				has_government = libsoc
+			}
+		}
+	}
+}
+
+# 1947.4.20: DEN Christian X -> Frederick IX
+country_event = {
+	id = monarchy.18
+	title = monarchy.18.t
+	desc = monarchy.18.d
+	picture = GFX_report_event_generic_funeral
+
+	trigger = {
+		original_tag = DEN
+		date > 1947.4.1
+	}
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = { 
+		days = 20
+	}
+	
+	immediate = {
+		hidden_effect = {
+		if = {
+			limit = { has_government = monarchism }
+			kill_country_leader = yes
+		}
+		create_country_leader = {
+			name = "Frederick IX"
+			desc = ""
+			picture = "Portrait_DEN_monarchy_2.dds"
+			expire = "1965.1.1"
+			ideology = constitutional_monarchy
+			traits = {
+			}
+		}
+		}
+	}
+	
+	option = {
+		name = monarchy.18.a
+		
+		trigger = {
+			OR = {
+				has_government = monarchism
+				has_government = democratic
+				has_government = neutrality
+			}
+		}
+	}
+	
+	option = {
+		name = monarchy.18.b
+		
+		trigger = {
+			OR = {
+				has_government = fascism
+			}
+		}
+	}
+	
+	option = {
+		name = monarchy.18.c
+		
+		trigger = {
+			OR = {
+				has_government = communism
+				has_government = anarchism
+			}
+		}
+	}
+}
+
+# 1940.5.28: FIN Frederick Charles -> Philipp
+country_event = {
+	id = monarchy.19
+	title = monarchy.19.t
+	desc = monarchy.19.d
+	picture = GFX_report_event_generic_funeral
+
+	trigger = {
+		original_tag = FIN
+		date > 1940.5.1
+	}
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = { 
+		days = 28
+	}
+	
+	immediate = {
+		hidden_effect = {
+		if = {
+			limit = { has_government = monarchism }
+			kill_country_leader = yes
+		}
+		create_country_leader = {
+			name = "Philipp"
+			desc = ""
+			picture = "Portrait_FIN_monarchy_2.dds"
+			expire = "1965.1.1"
+			ideology = constitutional_monarchy
+			traits = {
+			}
+		}
+		}
+	}
+	
+	option = {
+		name = monarchy.19.a
+		
+		trigger = {
+			OR = {
+				has_government = democratic
+				has_government = neutrality
+				has_government = fascism
+			}
+		}
+	}
+	
+	option = {
+		name = monarchy.19.b
+		
+		trigger = {
+			OR = {
+				has_government = monarchism
+			}
+		}
+	}
+	
+	option = {
+		name = monarchy.19.c
+		
+		trigger = {
+			OR = {
+				has_government = communism
+				has_government = anarchism
+			}
+		}
+	}
+}
+
+# china becomes monarchist
+country_event = {
+	id = monarchy.20
+	title = monarchy.20.t
+	desc = monarchy.20.d
+	picture = GFX_event_coronation_of_china
+
+	trigger = {
+		original_tag = CHI
+		has_government = monarchism
+		NOT = { has_country_flag = monarch_chosen }
+	}
+	
+	immediate = { set_country_flag = monarch_chosen }
+	
+	mean_time_to_happen = { 
+		days = 2 
+	}
+	
+	# Zhu Yuxun
+	option = {
+		name = monarchy.20.a
+		set_cosmetic_tag = CHI_MNG
+		add_ideas = zhu_yuxun
+		custom_effect_tooltip = monarchy.20.a.tt
+	}
+	
+	option = {
+		name = monarchy.20.e
+		retire_country_leader = yes
+		create_country_leader = {
+			name = "Kong Lingyi"
+			picture = "gfx/leaders/CHI/Portrait_CHI_monarchy_3.dds"
+			expire = "1960.1.1"
+			ideology = absolute_monarchy
+			traits = {
+			}
+		}
+		add_ideas = kong_lingyi
+	}
+	
+	# Aisin Gioro Puyi
+	option = {
+		name = monarchy.20.b
+		set_cosmetic_tag = CHI_QNG
+		retire_country_leader = yes
+		create_country_leader = {
+			name = "Aisin Gioro Puyi"
+			picture = "gfx/leaders/MAN/Portrait_Manchuria_Henry_Pu_Yi.dds"
+			expire = "1960.1.1"
+			ideology = absolute_monarchy
+			traits = {
+				warrior_code
+			}
+		}
+		trigger = {
+			NOT = { has_war_with = MAN }
+		}
+		annex_country = { target = MAN }
+		custom_effect_tooltip = monarchy.20.b.tt
+	}
+	
+	# Yuan Keding
+	option = {
+		name = monarchy.20.c
+		retire_country_leader = yes
+		create_country_leader = {
+			name = "Yuan Keding"
+			picture = "gfx/leaders/CHI/Portrait_CHI_monarchy_2.dds"
+			expire = "1960.1.1"
+			ideology = absolute_monarchy
+			traits = {
+			}
+		}
+		add_ideas = yuan_keding
+	}
+}
+
+# FRA support the right
+country_event = {
+	id = monarchy.21
+	title = monarchy.16.t
+	desc = monarchy.16.d
+	picture = GFX_event_coronation_of_king
+
+	is_triggered_only = yes
+	
+	# Fascism
+	option = {
+		name = monarchy.16.a
+		add_ideas = FRA_support_the_right_focus
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0                
+				has_government = monarchism
+			}
+			modifier = {
+				factor = 100   
+				has_government = fascism
+			}
+			modifier = {
+				factor = 100 
+				any_neighbor_country = {
+					has_government = fascism
+				}
+			}
+			modifier = {
+				factor = 0.5
+				any_neighbor_country = {
+					has_government = monarchism
+				}
+			}
+		}
+	}
+	
+	# Monarchism
+	option = {
+		name = monarchy.16.b
+		add_ideas = FRA_monarchy
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0                
+				has_government = fascism
+			}
+			modifier = {
+				factor = 100   
+				has_government = monarchism
+			}
+			modifier = {
+				factor = 100 
+				any_neighbor_country = {
+					has_government = monarchism
+				}
+			}
+			modifier = {
+				factor = 0.5
+				any_neighbor_country = {
+					has_government = fascism
+				}
+			}
+		}
+	}
+}
+
+# india becomes monarchist
+country_event = {
+	id = monarchy.22
+	title = monarchy.22.t
+	desc = monarchy.22.d
+	picture = GFX_event_coronation_of_king
+
+	trigger = {
+		original_tag = RAJ
+		has_government = monarchism
+		NOT = { has_country_flag = monarch_chosen }
+	}
+	
+	immediate = { set_country_flag = monarch_chosen }
+	
+	mean_time_to_happen = { 
+		days = 2 
+	}
+	
+	# Bamba Sutherland
+	option = {
+		name = monarchy.22.a
+		hidden_effect = {
+			retire_country_leader = yes
+		}
+		create_country_leader = {
+			name = "Bamba Sutherland"
+			picture = "gfx/leaders/RAJ/Portrait_RAJ_Monarchy_1.dds"
+			expire = "1960.1.1"
+			ideology = maharaja
+			traits = {
+			}
+		}
+	}
+	
+	# Sree Chithira
+	option = {
+		name = monarchy.22.e
+	}
+	
+	# Osman Ali Kahn
+	option = {
+		name = monarchy.22.b
+		hidden_effect = {
+			retire_country_leader = yes
+		}
+		create_country_leader = {
+			name = "Osman Ali Khan"
+			picture = "gfx/leaders/RAJ/Portrait_RAJ_Monarchy_3.dds"
+			expire = "1960.1.1"
+			ideology = nizam
+			traits = {
+			}
+		}
+	}
+	
+	# Sayajirao Gaekwad III
+	option = {
+		name = monarchy.22.c
+		retire_country_leader = yes
+		set_country_flag = sayajirao_chosen
+		create_country_leader = {
+			name = "Sayajirao Gaekwad III"
+			picture = "gfx/leaders/RAJ/Portrait_RAJ_Monarchy_4.dds"
+			expire = "1960.1.1"
+			ideology = maharaja
+			traits = {
+			}
+		}
+		
+		trigger = {
+			date < 1939.2.6
+		}
+	}
+	
+	# Pratap Singh Rao Gaekwad
+	option = {
+		name = monarchy.22.f
+		retire_country_leader = yes
+		create_country_leader = {
+			name = "Sayajirao Gaekwad III"
+			picture = "gfx/leaders/RAJ/Portrait_RAJ_Monarchy_5.dds"
+			expire = "1960.1.1"
+			ideology = maharaja
+			traits = {
+			}
+		}
+		
+		trigger = {
+			date > 1939.2.6
+		}
+	}
+}
+
+# 1939.2.6: RAJ Sayajirao Gaekwad III -> Pratap Singh Rao Gaekwad
+country_event = {
+	id = monarchy.23
+	title = monarchy.23.t
+	desc = monarchy.23.d
+	picture = GFX_report_event_generic_funeral
+
+	trigger = {
+		original_tag = RAJ
+		has_country_flag = sayajirao_chosen
+		date > 1939.2.1
+	}
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = { 
+		days = 7
+	}
+	
+	immediate = {
+	hidden_effect = {
+		if = {
+			limit = { has_government = monarchism }
+			kill_country_leader = yes
+		}
+		create_country_leader = {
+			name = "Sayajirao Gaekwad III"
+			picture = "gfx/leaders/RAJ/Portrait_RAJ_Monarchy_5.dds"
+			expire = "1960.1.1"
+			ideology = maharaja
+			traits = {
+			}
+		}
+		}
+	}
+	
+	option = {
+		name = monarchy.23.a
+	}
+}
+
+# USA becomes monarchist
+country_event = {
+	id = monarchy.27
+	title = monarchy.27.t
+	desc = monarchy.27.d
+	picture = GFX_event_coronation_of_king
+
+	trigger = {
+		original_tag = USA
+		has_government = monarchism
+	}
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = { 
+		days = 2
+	}
+	
+	# Lincoln
+	option = {
+		name = monarchy.27.a		
+	}
+	
+	# Roosevelt
+	option = {
+		name = monarchy.27.b
+		create_country_leader = {
+			name = "Franklin Delano Roosevelt"
+			desc = "POLITICS_FRANKLIN_DELANO_ROOSEVELT_DESC"
+			picture = "Portrait_USA_Franklin_Roosevelt.dds"
+			expire = "1947.1.1"
+			ideology = constitutional_monarchy
+			traits = {
+				dislikes_germany
+			}
+		}
+		set_party_name = { ideology = monarchism long_name = USA_roosevelt_party_long name = USA_roosevelt_party }
+		set_country_flag = roosevelt_is_king
+		
+		trigger = {
+			date < 1945.4.12
+		}
+	}
+	
+	# James Roosevelt
+	option = {
+		name = monarchy.27.b
+		set_party_name = { ideology = monarchism long_name = USA_roosevelt_party_long name = USA_roosevelt_party }
+		create_country_leader = {
+			name = "James Roosevelt"
+			desc = ""
+			picture = "Portrait_USA_monarchy_2.dds"
+			expire = "1947.1.1"
+			ideology = constitutional_monarchy
+			traits = {
+			}
+		}
+		trigger = {
+			date > 1945.4.12
+		}
+	}
+}
+
+# 1945.4.1: USA FDR -> James Roosevelt
+country_event = {
+	id = monarchy.28
+	title = monarchy.28.t
+	desc = monarchy.28.d
+	picture = GFX_report_event_generic_funeral
+
+	trigger = {
+		original_tag = USA
+		has_country_flag = roosevelt_is_king
+		date > 1945.4.1
+	}
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = { 
+		days = 12
+	}
+	
+	immediate = {
+	hidden_effect = {
+		if = {
+			limit = { has_government = monarchism }
+			kill_country_leader = yes
+		}
+		create_country_leader = {
+			name = "James Roosevelt"
+			desc = ""
+			picture = "Portrait_USA_monarchy_2.dds"
+			expire = "1947.1.1"
+			ideology = constitutional_monarchy
+			traits = {
+			}
+		}
+		}
+	}
+	
+	option = {
+		name = monarchy.28.a
+	}
+}
+
+# Hungary joins axis
+country_event = {
+	id = monarchy.29
+	title = monarchy.29.t
+	desc = monarchy.29.d
+	picture = GFX_report_event_german_speech
+
+	trigger = {
+		original_tag = HUN
+		is_in_faction = no
+		has_government = monarchism
+		NOT =  { has_war_with = GER }
+		GER = { has_war = yes }
+		GER = { is_faction_leader = yes }
+		date > 1940.1.1
+	}
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = { 
+		days = 7
+	}
+	
+	option = {
+		name = monarchy.29.a
+		GER = { add_to_faction = HUN }
+	}
+	
+	option = {
+		name = monarchy.29.b
+	}
+}
+
+# Carol II dies
+country_event = {
+	id = monarchy.44
+	title = monarchy.44.t
+	desc = monarchy.44.d
+	picture = GFX_report_event_generic_funeral
+
+	trigger = {
+		original_tag = ROM
+		date > 1953.4.1
+		NOT = { has_country_flag = carol_ii_not_king }
+	}
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = { 
+		days = 7
+	}
+	
+	immediate = {
+	hidden_effect = {
+		if = {
+			limit = { has_government = monarchism }
+			kill_country_leader = yes
+		}
+		
+		create_country_leader = {
+			name = "Michael I"
+			desc = "POLITICS_MICHAEL_I_DESC"
+			picture = "GFX_Portrait_romania_michael_i"
+			expire = "1965.1.1"
+			ideology = absolute_monarchy
+			traits = {
+				#
+			}
+		}
+		
+		if = {
+			limit = {
+				has_idea = ROM_king_carol_ii_hedonist
+			}
+			remove_ideas = ROM_king_carol_ii_hedonist
+		}
+		
+		set_country_flag = carol_ii_not_king
+		}
+	}
+	
+	option = {
+		name = monarchy.44.a
+		
+		trigger = {
+			has_government = monarchism 
+		}
+	}
+	
+	option = {
+		name = monarchy.44.b
+		
+		set_country_flag = carol_ii_not_king
+		
+		trigger = {
+			NOT = { has_government = monarchism }
+		}
+	}
+}
+
+# death of Ahmed IV
+country_event = {
+	id = monarchy.46
+	title = monarchy.46.t
+	desc = monarchy.46.d
+	picture = GFX_report_event_generic_funeral
+
+	trigger = {
+		original_tag = TUR
+		date > 1954.8.1
+		NOT = { has_country_flag = death_of_ahmed }
+	}
+	
+	fire_only_once = yes
+	
+	mean_time_to_happen = { 
+		days = 3 
+	}
+	
+	immediate = {
+	hidden_effect = {
+		if = {
+			limit = { has_government = monarchism }
+			kill_country_leader = yes
+		}
+		create_country_leader = {
+			name = "Osman IV"
+			picture = "Portrait_TUR_monarchy_3.dds"
+			expire = "1965.1.1" # died in 1973
+			ideology = caliphate
+			traits = {
+				
+			}
+		}
+		set_country_flag = death_of_ahmed
+		}
+	}
+	
+	option = {
+		name = monarchy.46.a
+		
+		trigger = {
+			has_government = monarchism
+		}
+	}
+	
+	option = {
+		name = monarchy.46.b
+		
+		trigger = {
+			NOT = { has_government = monarchism }
+		}
+	}
+	
+]
+	

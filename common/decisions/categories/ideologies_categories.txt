@@ -1,0 +1,25 @@
+libsoc_on_the_rise = {
+	icon = generic_communism
+
+	allowed = {
+		always = yes
+	}
+	
+	#visible = {
+	#	NOT = { has_government = libsoc }
+	#	has_idea_with_trait = libsoc_revolutionary
+	#}
+}
+
+monarchism_on_the_rise = {
+	icon =  generic_fascism
+
+	allowed = {
+		always = yes
+	}
+	
+	#visible = {
+	#	NOT = { has_government = monarchism }
+	#	has_idea_with_trait = monarchist_advocate
+	#}
+}

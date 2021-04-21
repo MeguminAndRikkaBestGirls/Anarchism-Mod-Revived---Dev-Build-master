@@ -1,0 +1,71 @@
+spriteTypes = {
+	spriteType = {
+		name = "GFX_idea_alfred_hugenberg"
+		texturefile = "gfx/interface/ideas/idea_alfred_hugenberg.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_idea_idea_charles_coughlin"
+		texturefile = "gfx/interface/ideas/idea_charles_coughlin.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_idea_idea_charles_coughlin"
+		texturefile = "gfx/interface/ideas/idea_charles_coughlin.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_idea_duke_henry"
+		texturefile = "gfx/interface/ideas/idea_duke_henry.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_idea_ethel_mannin"
+		texturefile = "gfx/interface/ideas/idea_ethel_mannin.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_idea_fanya_baron"
+		texturefile = "gfx/interface/ideas/idea_fanya_baron.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_idea_frank_bohn"
+		texturefile = "gfx/interface/ideas/idea_frank_bohn.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_idea_george_orwell"
+		texturefile = "gfx/interface/ideas/idea_george_orwell.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_idea_infante_jaime_duke_of_segovia"
+		texturefile = "gfx/interface/ideas/idea_infante_jaime_duke_of_segovia.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_idea_lorulot_andre"
+		texturefile = "gfx/interface/ideas/idea_lorulot_andre.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_idea_martin_buber"
+		texturefile = "gfx/interface/ideas/idea_martin_buber.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_idea_sadao_araki"
+		texturefile = "gfx/interface/ideas/idea_sadao_araki.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_ideas_vladimir_kislitsin"
+		texturefile = "gfx/interface/ideas/ideas_vladimir_kislitsin.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_idea_william_dudley_pelley"
+		texturefile = "gfx/interface/ideas/idea_william_dudley_pelley.dds"
+	}
+}

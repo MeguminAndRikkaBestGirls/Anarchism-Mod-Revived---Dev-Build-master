@@ -1,0 +1,602 @@
+add_namespace = ss
+###BASE GERMANY FOCUSES###
+country_event = {
+	id = ss.1 # Nazi Party Officials Speak out against Hitler - Base Germany focus
+	title = ss.1.t
+	desc = ss.1.d
+
+
+	picture = GFX_report_event_german_reichstag_gathering
+	
+
+	is_triggered_only = yes
+	
+	option = {
+		name = ss.1.a #	the reich will be reborn!
+		add_political_power = 100
+	}
+	
+
+}
+
+####SS EVENTS####
+news_event = {
+	id = ss.2 #The Fascist Menace
+	title = ss.2.t
+	desc = ss.2.d
+
+	is_triggered_only = yes
+
+	picture = GFX_report_event_german_reichstag_gathering
+
+	fire_only_once = no
+
+	option = {
+		name = ss.2.a #	There goes peace in our time
+	}
+}
+country_event = {
+	id = ss.3 #The SS Coup - Germany
+	title = ss.3.t
+	desc = ss.3.d
+	
+	is_triggered_only = yes
+
+	picture = GFX_report_event_german_reichstag_gathering
+
+	fire_only_once = yes
+
+	option = {
+		name = ss.3.a # The SS is now in power!
+		kill_country_leader = yes
+		create_country_leader = {
+			name = "Schutzstaffel Temporary Government"
+			desc = "POLITICS_SS_GOVERNMENT"
+			picture = "Portrait_SS_government.dds"
+			expire = "1965.1.1"
+			ideology = esoteric_nazism
+			traits = { 
+				stammer 
+				indecisive
+			}
+		}
+		set_politics = {
+			ruling_party = nazism_ideology
+		}
+		hidden_effect = { 	
+		set_cosmetic_tag = GER_schutzstaffel #FLAG
+		set_cosmetic_tag = SS_GER #Colour
+		}
+	}
+}
+country_event = {
+	id = ss.4 #Who is the Fuhrer?
+	title = ss.4.t
+	desc = ss.4.d
+	
+	is_triggered_only = yes
+
+	picture = GFX_report_event_german_politician_speech
+
+	fire_only_once = yes
+
+	option = {
+		name = ss.4.a #Himmler
+		ai_chance = {
+			factor = 15
+		}
+		create_country_leader = {
+			name = "Heinrich Himmler"
+			desc = "POLITICS_SS_GOVERNMENT"
+			picture = "Portrait_Germany_Heinrich_Himmler.dds"
+			expire = "1965.1.1"
+			ideology = esoteric_nazism
+			traits = { 
+				militant_socialist 
+				warrior_code 
+				warmonger 
+				stammer 
+			}
+		}
+	}
+	option = {
+		name = ss.4.b #Heydrich
+		ai_chance = {
+			factor = 1
+		}
+		create_country_leader = {
+			name = "Reinhard Heydrich"
+			desc = "POLITICS_SS_GOVERNMENT"
+			picture = "Portrait_Germany_Reinhard_Heydrich.tga"
+			expire = "1965.1.1"
+			ideology = esoteric_nazism
+			traits = { 
+				fascist_militia_leader 
+				triumphant_revolutionary 
+				nationalist_symbol
+			}
+		}
+	}
+}
+country_event = {
+	id = ss.5 # The SS declares extreme measures
+	title = ss.5.t
+	desc = ss.5.d
+
+	is_triggered_only = yes
+
+	picture = GFX_news_event_german_speech
+
+	fire_only_once = yes
+
+	option = {
+		name = ss.5.a #	The people need to be controlled
+		add_stability = -0.2
+	}
+}
+country_event = {
+	id = ss.6 # Night of the Rope
+	title = ss.6.t
+	desc = ss.6.d
+
+	is_triggered_only = yes
+
+	picture = GFX_news_event_german_soldiers
+
+	fire_only_once = yes
+
+	option = {
+		name = ss.6.a #	Hang the traitors!
+		add_stability = -0.2
+		add_popularity = {
+			ideology = nazism_ideology
+			popularity = -0.1
+		}
+	}
+}
+country_event = {
+	id = ss.7 # The Reichstag Purged
+	title = ss.7.t
+	desc = ss.7.d
+
+	is_triggered_only = yes
+
+	picture = GFX_news_event_heinrich_himmler
+
+	fire_only_once = yes
+
+	option = {
+		name = ss.7.a #	Advance at all costs!
+		add_stability = -0.2
+		add_named_threat = {
+			name = SS_empty_reichstag
+			threat = 5
+		}
+		hidden_effect = {
+			country_event = { id = ss.9 days = 40 }
+		}
+	}
+}
+news_event = {
+	id = ss.8 # Murder in the Reichstag
+	title = ss.8.t
+	desc = ss.8.d
+
+	is_triggered_only = yes
+
+	picture = GFX_news_event_heinrich_himmler
+
+	fire_only_once = no
+
+	option = {
+		name = ss.8.a #	Disgusting
+	}
+}
+#####Protest EVENT CHAIN#####
+country_event = {
+	id = ss.9 #Strikers alert
+	title = ss.9.t
+	desc = ss.9.d
+
+	is_triggered_only = yes
+
+	picture = GFX_news_event_gathering_protest
+
+	fire_only_once = no
+
+	option = {
+		name = ss.9.a # Ignore them
+		ai_chance = {
+			factor = 1
+		}
+		hidden_effect = {
+			country_event = { id = ss.10 days = 10 } #Fail
+		}
+	}
+	option = {
+		name = ss.9.b # Talk them out of it
+		ai_chance = {
+			factor = 1
+		}
+		add_political_power = -100
+		hidden_effect = {
+			country_event = { id = ss.10 days = 10 } #Fail
+		}
+	}
+	option = {
+		name = ss.9.c # Violent Response
+		ai_chance = {
+			factor = 10
+		}
+		add_stability = -0.1
+		hidden_effect = {
+			country_event = { id = ss.11  days = 10 }#KILL
+		}
+	}
+}
+country_event = { # Fail to stop strikes
+	id = ss.10
+	title = ss.10.t
+	desc = ss.10.d
+
+	is_triggered_only = yes
+
+	picture = GFX_news_event_gathering_protest
+
+	fire_only_once = no
+
+	option = {
+		name = ss.10.a #Damn
+		add_ideas = widespread_strikes
+		hidden_effect = {
+			country_event = { id = ss.9 days = 10 }
+		}
+		
+	}
+}
+country_event = { # Success in eliminating strikers
+	id = ss.11
+	title = ss.11.t
+	desc = ss.11.d
+
+	is_triggered_only = yes
+
+	picture = GFX_news_event_gathering_protest
+
+	fire_only_once = yes
+
+	option = {
+		name = ss.11.a #Let's hope they learned a lesson
+		remove_ideas = widespread_strikes
+		add_timed_idea = {
+			idea = brutal_punishers
+			days = 180
+		}
+		
+	}
+}
+news_event = {
+	id = ss.12 # Nation-wide Gestapo Operations
+	title = ss.12.t
+	desc = ss.12.d
+
+	is_triggered_only = yes
+
+	picture = GFX_news_event_german_soldiers
+
+	fire_only_once = yes
+
+	option = {
+		name = ss.12.a # Everying goes accordingly to plan...
+	}
+}
+news_event = {
+	id = ss.13 # A Day in the NJSS (Nationale Jugendgruppe der Schutzstaffel) National Youth Group of the SS
+	title = ss.13.t
+	desc = ss.13.d
+
+	is_triggered_only = yes
+
+	picture = GFX_report_event_hitler_parade
+
+	fire_only_once = yes
+
+	option = {
+		name = ss.13.a # The children are our future...
+	}
+}
+news_event = {
+	id = ss.14 # Worship of the Fuhrer
+	title = ss.14.t
+	desc = ss.14.d
+
+	is_triggered_only = yes
+
+	picture = GFX_report_event_hitler_parade
+
+	fire_only_once = yes
+
+	option = {
+		name = ss.14.a # A great man indeed
+	}
+}
+news_event = {
+	id = ss.15 # Construction of Pagan Memorials
+	title = ss.15.t
+	desc = ss.15.d
+
+	is_triggered_only = yes
+
+	picture = GFX_report_event_hitler_parade # NEED CHANGES
+
+	fire_only_once = yes
+
+	option = {
+		name = ss.15.a # The gods will provide us good fortune
+	}
+}
+country_event = {
+	id = ss.16 # Churches set on fire
+	title = ss.16.t
+	desc = ss.16.d
+
+	is_triggered_only = yes
+
+	picture = GFX_report_event_hitler_parade # Need Changes
+
+	fire_only_once = yes
+
+	option = {
+		name = ss.16.a # They better convert fast...
+		add_political_power = -100
+	}
+}
+news_event = {
+	id = ss.17 # State Religion Announced
+	title = ss.17.t
+	desc = ss.17.d
+
+	is_triggered_only = yes
+
+	picture = GFX_report_event_hitler_parade # NEEDS CHANGES
+
+	fire_only_once = yes
+
+	option = {
+		name = ss.17.a # Ein Reich, Ein Fuhrer, Ein Religion
+	}
+}
+
+#####MASSIVE: EVENT CHAIN RHINELAND STORMED######
+
+country_event = {
+	id = ss.18 # Soldiers on the Rhine
+	title = ss.18.t
+	desc = ss.18.d # March slowly, watching french reply
+
+	is_triggered_only = yes
+
+	picture = GFX_report_event_hitler_parade # Need Changes
+
+	fire_only_once = yes
+
+	option = {
+		name = ss.18.a # Our fate lies in this moment
+		hidden_effect = {
+			FRA = {
+				country_event = ss.19
+			}
+		}
+	}
+}
+country_event = {
+	id = ss.19 # French Reaction: Intruders at the border!
+	title = ss.19.t
+	desc = ss.19.d 
+
+	is_triggered_only = yes
+
+	picture = GFX_report_event_hitler_parade # Need Changes
+
+	fire_only_once = yes
+
+	option = {
+		name = ss.19.a # The SS are too radical to be left alive - Germans get event: ss.20
+		GER = {
+			country_event = { id = ss.20 days = 10 }
+		}
+		ai_chance = {
+			factor = 10
+		}
+		add_named_threat = {
+			name = SS_storm_the_rhine
+			threat = 8
+		}
+	}
+	option = {
+		name = ss.19.b # Compromises must be made to preserve peace.
+		add_timed_idea = {
+			idea = bowed_to_germany #- minus stability, pp, and plus nazism and fascism
+			days = 180
+		}
+		add_named_threat = {
+			name = SS_storm_the_rhine
+			threat = 5
+		}	
+		GER = {
+			country_event = { id = ss.21 days = 10 }
+		}
+		ai_chance = {
+			factor = 2
+		}
+	}
+}
+country_event = {
+	id = ss.20 # French Soldiers march into Rhineland, we run - Germany
+	title = ss.20.t
+	desc = ss.20.d
+
+	is_triggered_only = yes
+
+	picture = GFX_report_event_hitler_parade # Need Changes
+
+	fire_only_once = yes
+
+	option = {
+		name = ss.20.a # So they have chosen death...
+		set_country_flag = rhineland_refused
+		add_ideas = scared_of_the_french
+	}
+}
+country_event = {
+	id = ss.21 # French Cowards Bow to us
+	title = ss.21.t
+	desc = ss.21.d 
+
+	is_triggered_only = yes
+
+	picture = GFX_report_event_hitler_parade # Need Changes
+
+	fire_only_once = yes
+
+	option = {
+		name = ss.21.a # The cowardly filth!
+		51 = { # Rhineland
+			set_demilitarized_zone = no
+		}
+		add_timed_idea = {
+			idea = cowardly_french
+			days = 180
+		} 
+	}
+}
+##DECISIONS: Germany Starts Border War##
+country_event = {
+	id = ss.22 # Occupation of Alsace Lorraine - 
+	title = ss.22.t
+	desc = ss.22.d # Fuhrer ordered us to attack, no matter what.
+
+	is_triggered_only = yes
+
+	picture = GFX_report_event_hitler_parade # Need Changes
+
+	fire_only_once = yes
+
+	option = {
+		name = ss.22.a # The French mistake became our victory
+		add_ideas = victory_on_the_rhine
+}
+country_event = {
+	id = ss.23 # Our Soldiers Overrun
+	title = ss.23.t
+	desc = ss.23.d # Lose the borderwar
+
+	is_triggered_only = yes
+
+	picture = GFX_report_event_hitler_parade # Need Changes
+
+	fire_only_once = yes
+
+	option = {
+		name = ss.23.a # Someone 
+		add_ideas = slapped_with_defeat
+		create_wargoal = {
+			type = puppet_wargoal_focus
+			target = FRA
+		}
+		add_ai_strategy = {
+			type = declare_war
+			id = FRA
+			value = 500
+		}
+		#states get demiltaried
+	}
+}
+country_event = {
+	id = ss.24 # Deadlock on the Rhine
+	title = ss.24.t
+	desc = ss.24.d 
+
+	is_triggered_only = yes
+
+	picture = GFX_report_event_hitler_parade # Need Changes
+
+	fire_only_once = yes
+
+	option = {
+		name = ss.24.a # It seems we have reached an impasse...but not for long
+		add_ai_strategy = {
+			type = antagonize
+			id = FRA
+			value = 200
+		}
+	}
+}
+country_event = {
+	id = ss.25 # Heroic Defence on the Rhine River! - France
+	title = ss.25.t
+	desc = ss.25.d 
+
+	is_triggered_only = yes
+
+	picture = GFX_report_event_hitler_parade # Need Changes
+
+	fire_only_once = yes
+
+	option = {
+		name = ss.25.a # These men will be hailed forever
+		add_ai_strategy = {
+			type = antagonize
+			id = GER
+			value = 200
+		}
+		add_ideas = german_army_crushed
+		#german weaklings crushed
+	}
+}
+country_event = {
+	id = ss.26 # German Trickery - France finds that Germany won
+	title = ss.26.t
+	desc = ss.26.d 
+
+	is_triggered_only = yes
+
+	picture = GFX_report_event_hitler_parade # Need Changes
+
+	fire_only_once = yes
+
+	option = {
+		name = ss.26.a # Absolutely Disgusting
+		add_timed_idea = {
+			idea = french_army_humiliated
+			days = 180
+		} #- minus attack, stability, a whole bunch
+		#START CIVIL WAR - AN EVENT FIRES LATER
+		#ai will hate
+		add_ai_strategy = {
+			type = antagonize
+			id = GER
+			value = 500
+		}
+	}
+}
+country_event = {
+	id = ss.27 # An Uneasy Tie
+	title = ss.27.t
+	desc = ss.27.d 
+
+	is_triggered_only = yes
+
+	picture = GFX_report_event_hitler_parade # Need Changes
+
+	fire_only_once = yes
+
+	option = {
+		name = ss.27.a # We will prepare for the future
+		add_ai_strategy = {
+			type = antagonize
+			id = GER
+			value = 200
+		}
+	}
+}

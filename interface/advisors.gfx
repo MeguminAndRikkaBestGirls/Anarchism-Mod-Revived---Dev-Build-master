@@ -1,0 +1,83 @@
+spriteTypes = {
+	spriteType = {
+		name = "GFX_idea_generic_libsoc_revolutionary_western_european_2d"
+		texturefile = "gfx/interface/ideas/idea_generic_communist_europe.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_idea_generic_libsoc_revolutionary_commonwealth_2d"
+		texturefile = "gfx/interface/ideas/idea_generic_communist_europe.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_idea_generic_libsoc_revolutionary_eastern_european_2d"
+		texturefile = "gfx/interface/ideas/idea_generic_communist_europe.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_idea_generic_libsoc_revolutionary_asian_2d"
+		texturefile = "gfx/interface/ideas/idea_generic_communist_asia.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_idea_generic_libsoc_revolutionary_southamerican_2d"
+		texturefile = "gfx/interface/ideas/idea_generic_communist_south_america.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_idea_generic_libsoc_revolutionary_middle_eastern_2d"
+		texturefile = "gfx/interface/ideas/idea_generic_communist_arab.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_idea_generic_libsoc_revolutionary_african_2d"
+		texturefile = "gfx/interface/ideas/idea_generic_communist_africa.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_idea_emma_goldman"
+		texturefile = "gfx/interface/ideas/idea_emma_goldman.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_idea_george_orwell"
+		texturefile = "gfx/interface/ideas/idea_george_orwell.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_idea_dorothy_day"
+		texturefile = "gfx/interface/ideas/idea_dorothy_day.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_idea_generic_monarchist_advocate_western_european_2d"
+		texturefile = "gfx/interface/ideas/idea_generic_fascist_europe.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_generic_monarchist_advocate_commonwealth_2d"
+		texturefile = "gfx/interface/ideas/idea_generic_fascist_europe.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_generic_monarchist_advocate_eastern_european_2d"
+		texturefile = "gfx/interface/ideas/idea_generic_fascist_europe.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_generic_monarchist_advocate_asian_2d"
+		texturefile = "gfx/interface/ideas/idea_generic_fascist_asia.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_generic_monarchist_advocate_southamerican_2d"
+		texturefile = "gfx/interface/ideas/idea_generic_fascist_south_america.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_generic_monarchist_advocate_middle_eastern_2d"
+		texturefile = "gfx/interface/ideas/idea_generic_fascist_arab.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_generic_monarchist_advocate_african_2d"
+		texturefile = "gfx/interface/ideas/idea_generic_fascist_africa.dds"
+	}
+}
+
+
+

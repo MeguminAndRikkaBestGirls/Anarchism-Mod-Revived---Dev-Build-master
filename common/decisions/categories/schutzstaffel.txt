@@ -1,0 +1,14 @@
+SS_rhine = {
+	icon = generic_fascism
+
+	allowed = {
+		always = no
+	}
+	
+	visible = {
+		GER = {
+            		has_country_flag = rhineland_refused
+       		}
+	}
+}
+

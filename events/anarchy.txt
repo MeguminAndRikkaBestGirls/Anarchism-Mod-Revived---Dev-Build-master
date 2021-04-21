@@ -1,0 +1,1364 @@
+﻿###########################
+# Test Events
+###########################
+
+add_namespace = anarchy
+
+# canada: burn royal portraits
+country_event = {
+	id = anarchy.1
+	title = anarchy.1.t
+	desc = anarchy.1.d
+	picture = GFX_report_event_communist_leader
+
+	is_triggered_only = yes
+
+	option = {
+		name = anarchy.1.a
+		add_ideas = CAN_libsoc_ideals
+		ai_chance = { 
+			factor = 10 
+			modifier = {
+				communism > 0.5
+				factor = 0
+			}
+		}
+	}
+
+	option = {
+		name = anarchy.1.b
+		add_ideas = CAN_communist_ideals
+		ai_chance = { 
+			factor = 5
+			modifier = {
+				libsoc > 0.5
+				factor = 0
+			}
+		}
+	}
+}
+
+# Free speech for fascists
+country_event = {
+	id = anarchy.2
+	title = anarchy.2.t
+	desc = anarchy.2.d
+	picture = GFX_report_event_communist_leader
+
+	trigger = {
+		has_government = libsoc
+		NOT = { has_idea = no_hate_speech }
+		NOT = { has_idea = free_speech_for_all }
+		fascism > 0.01
+	}
+
+	mean_time_to_happen = { days = 30 }
+
+	option = {
+		name = anarchy.2.a
+		add_ideas = no_hate_speech
+		ai_chance = { factor = 10 }
+	}
+
+	option = {
+		name = anarchy.2.b
+		add_ideas = free_speech_for_all
+	}
+}
+
+# Anarchist France asks Anarchist Spain to join Faction
+country_event = {
+	id = anarchy.3
+	title = anarchy.3.t
+	desc = anarchy.3.d
+	picture = GFX_report_event_communists_cheer
+
+	is_triggered_only = yes
+
+	option = {
+		name = anarchy.3.a
+		FRA = {
+			if = {
+				limit = { is_in_faction = no }
+				set_rule = { can_create_factions = yes }
+				create_faction = "anarchist_international"
+			}
+		}
+		FRA = {	add_to_faction = SPR }
+		hidden_effect = {
+			news_event = { hours = 6 id = anarchy.4 }
+		}
+	}
+	option = {
+		name = anarchy.3.b
+		ai_chance = { factor = 0 }
+		FRA = {
+			add_opinion_modifier = { target = SPR modifier = ITA_FRA_woo_italy_reject }
+		}
+		hidden_effect = {
+			news_event = { hours = 6 id = news.183 }
+		}
+	}
+}
+
+# Anarchist France and Anarchist Spain allies
+news_event = {
+	id = anarchy.4
+	title = anarchy.4.t
+	desc = anarchy.4.desc
+	picture = GFX_news_event_019
+
+	major = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		FRA = {
+			save_event_target_as = France
+		}
+	}
+
+	# Solidarity forever!
+	option = {
+		name = anarchy.4.a
+		trigger = {
+			OR = {
+				tag = FRA
+				tag = SPR
+			}
+		}
+	}
+
+
+	# How many Internationals will those commies make?
+	option = {
+		name = anarchy.4.b
+		trigger = {
+			NOT = { tag = FRA }
+			NOT = { tag = SPR }
+			has_government = democratic
+		}
+	}
+
+	# The communists fight among themselves
+	option = {
+		name = anarchy.4.c
+		trigger = {
+			NOT = { tag = FRA }
+			NOT = { tag = SPR }
+			has_government = fascism
+		}
+	}
+
+	# damn anarchists
+	option = {
+		name = anarchy.4.d
+		trigger = {
+			NOT = { tag = FRA }
+			NOT = { tag = SPR }
+			OR = {
+				has_government = communism
+				OR = {
+					is_in_faction_with = SOV
+					has_government = libsoc
+				}
+			}
+		}
+	}
+
+	# Hmm...
+	option = {
+		name = anarchy.4.e
+		trigger = {
+			NOT = { tag = FRA }
+			NOT = { tag = SPR }
+			OR = {
+				has_government = libsoc
+				OR = {
+					NOT = { is_in_faction_with = SOV }
+					has_government = communism
+				}
+			}
+		}
+	}
+}
+
+# Anarchist Sympathies in Government
+country_event = {
+	id = anarchy.6
+	title = anarchy.6.t
+	desc = anarchy.6.d
+	picture = GFX_event_iww
+
+	is_triggered_only = yes
+	
+	option = {
+		name = anarchy.6.a
+		add_ideas = idea_generic_general_strike
+	}
+}
+
+# Anarchists Execute Coup
+country_event = {
+	id = anarchy.7
+	title = anarchy.7.t
+	desc = anarchy.7.d
+	picture = GFX_event_cnt_fai
+	
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = { 
+			remove_ideas = idea_generic_general_strike
+		}
+	}
+	
+	option = {
+		name = anarchy.7.a
+		set_politics = {
+			ruling_party = libsoc
+			elections_allowed = no
+		}
+		add_timed_idea = { idea = complete_anarchy days = 730 } 
+	}
+}
+
+# Anarchists Execute Coup
+country_event = {
+	id = anarchy.8
+	title = anarchy.7.t
+	desc = anarchy.7.d
+	picture = GFX_event_cnt_fai
+	
+	trigger = {
+		has_government = libsoc
+		has_idea = idea_generic_general_strike
+	}
+
+	mean_time_to_happen = {
+		days = 2
+	}
+
+	immediate = {
+		hidden_effect = { 
+			remove_ideas = idea_generic_general_strike
+		}
+	}
+	
+	option = {
+		name = anarchy.7.a
+	}
+}
+
+# australia: empower the workers
+country_event = {
+	id = anarchy.12
+	title = anarchy.20.t
+	desc = anarchy.20.d
+	picture = GFX_report_event_worker_protests
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = anarchy.20.a
+		swap_ideas = {
+			remove_idea = AST_abandon_the_westminster_system
+			add_idea = AST_abandon_the_westminster_system_libsoc
+		}
+		
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0                
+				communism > 0.5
+			}
+		}
+	}
+	
+	option = { # marxism
+		name = anarchy.20.b
+		swap_ideas = {
+			remove_idea = AST_abandon_the_westminster_system
+			add_idea = AST_abandon_the_westminster_system_communism
+		}
+		
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0                
+				libsoc > 0.5
+			}
+		}
+	}
+}
+
+# internationalism event for generic tree
+country_event = {
+	id = anarchy.13
+	title = anarchy.13.t
+	desc = anarchy.13.d
+	picture = GFX_report_event_worker_protests
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = anarchy.13.a
+		add_ideas = libsoc_internationalism
+		
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0                
+				has_government = communism
+			}
+			modifier = {
+				factor = 100   
+				has_government = libsoc
+			}
+			modifier = {
+				factor = 100 
+				any_neighbor_country = {
+					has_government = libsoc
+				}
+			}
+			modifier = {
+				factor = 0.5
+				any_neighbor_country = {
+					has_government = communism
+				}
+			}
+		}
+	}
+	
+	option = { # marxism
+		name = anarchy.13.b
+		add_ideas = internationalism
+		
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0                
+				has_government = libsoc
+			}
+			modifier = {
+				factor = 100   
+				has_government = communism
+			}
+			modifier = {
+				factor = 100 
+				any_neighbor_country = {
+					has_government = communism
+				}
+			}
+			modifier = {
+				factor = 0.5
+				any_neighbor_country = {
+					has_government = libsoc
+				}
+			}
+		}
+	}
+}
+
+# new zealand: the lee affair
+country_event = {
+	id = anarchy.14
+	title = anarchy.20.t
+	desc = anarchy.20.d
+	picture = GFX_report_event_worker_protests
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = anarchy.20.a
+		swap_ideas = {
+			remove_idea = NZL_first_labor_government
+			add_idea = NZL_the_workers_unions_1
+		}
+		
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0                
+				communism > 0.5
+			}
+		}
+	}
+	
+	option = { # marxism
+		name = anarchy.20.b
+		swap_ideas = {
+			remove_idea = NZL_first_labor_government
+			add_idea = NZL_the_workers_party_1
+		}
+		
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0                
+				libsoc > 0.5
+			}
+		}
+	}
+}
+
+# south africa: empower the workers
+country_event = {
+	id = anarchy.15
+	title = anarchy.20.t
+	desc = anarchy.20.d
+	picture = GFX_report_event_worker_protests
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = anarchy.20.a
+		swap_ideas = {
+			remove_idea = SAF_abandon_westminster
+			add_idea = SAF_abandon_westminster_libsoc
+		}
+		
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0                
+				communism > 0.3
+			}
+		}
+	}
+	
+	option = { # marxism
+		name = anarchy.20.b
+		swap_ideas = {
+			remove_idea = SAF_abandon_westminster
+			add_idea = SAF_abandon_westminster_communism
+		}
+		
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0                
+				libsoc > 0.3
+			}
+		}
+	}
+}
+
+# Soviet's intervene in Spanish Civil War
+country_event = {
+	id = anarchy.17
+	title = anarchy.17.t
+	desc = anarchy.17.d
+	picture = GFX_event_cnt_fai
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = anarchy.17.a
+		SPR = { country_event = { id = anarchy.18 days = 1 } }
+		ai_chance = { 
+			factor = 5
+			modifier = {
+				factor = 0
+				has_country_flag = SOV_funded_cnt
+			}
+		}
+	}
+	
+	option = {
+		name = anarchy.17.b
+	}
+}
+
+# Spain is screwed
+country_event = {
+	id = anarchy.18
+	title = anarchy.18.t
+	desc = anarchy.18.d
+	picture = GFX_event_cnt_fai
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = anarchy.18.a
+		add_timed_idea = {
+			idea = SPR_anarchy_screwed
+			days = 365
+		}
+	}
+	
+	option = {
+		name = anarchy.18.b
+		set_party_name = { ideology = communism long_name = SPR_stalinism_party_long name = SPR_stalinism_party }
+		set_politics = {
+			ruling_party = communism
+			elections_allowed = no
+		}
+		create_country_leader = {
+			name = "José Díaz"
+			desc = "POLITICS_JOSE_DIAZ_DESC"
+			picture = "Portrait_Spain_Jose_Diaz.dds"
+			expire = "1965.1.1"
+			ideology = stalinism
+			traits = {
+				#
+			}
+		}
+		add_timed_idea = {
+			idea = SPR_anarchy_screwed
+			days = 365
+		}
+	}
+}
+
+# Stalin resigns
+country_event = {
+	id = anarchy.19
+	title = anarchy.19.t
+	desc = anarchy.19.d
+	picture = GFX_event_stalin_writing
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = anarchy.19.a
+		retire_country_leader = yes
+		set_country_flag = counter_purge
+		set_country_flag = leon_trotsky_leader
+		create_country_leader = {
+			name = "Leon Trotsky"
+			desc = "POLITICS_LEON_TROTSKY_DESC"
+			picture = "Portrait_Leon_Trotsky.dds"
+			expire = "1965.1.1"
+			ideology = trotskyism
+			traits = {
+				permanent_revolutionary
+			}
+		}
+		if = {
+			limit = { has_idea = trotskyite_plot_purged }
+			remove_ideas = trotskyite_plot_purged
+		}
+		if = {
+			limit = { has_idea = trotskyite_plot }
+			remove_ideas = trotskyite_plot
+		}
+		if = {
+			limit = { has_idea = libsoc_internationalism }
+			remove_ideas = libsoc_internationalism
+		}
+		remove_ideas = mikhail_kalinin
+		remove_ideas = ivan_konev
+		remove_unit_leader = 408
+		remove_ideas = pavel_zhigarev
+		remove_ideas = stepan_krasovsky
+		remove_ideas = arseniy_golovko
+		remove_unit_leader = 409
+		remove_ideas = georgy_zhukov
+		remove_unit_leader = 410
+		remove_ideas = sergey_gorshkov
+		remove_unit_leader = 411
+		remove_ideas = sergei_rudenko
+		remove_ideas = nikita_khrushchev
+		remove_ideas = konstantin_rodzaevsky
+		hidden_effect = {
+			news_event = { hours = 6 id = anarchy.41 }
+		}
+	}
+	
+	option = {
+		name = anarchy.19.b
+		retire_country_leader = yes
+		set_country_flag = victor_serge_leader
+		create_country_leader = {
+			name = "Victor Serge"
+			desc = "POLITICS_VICTOR_SERGE_DESC"
+			picture = "Portrait_Victor_Serge.dds"
+			expire = "1965.1.1"
+			ideology = former_anarchist
+			traits = {
+				former_anarchist_trait
+			}
+		}
+		if = {
+			limit = {
+				has_idea = trotskyite_plot
+			}
+			remove_ideas = trotskyite_plot
+		}
+		if = {
+			limit = {
+				has_idea = trotskyite_plot_purged
+			}
+			remove_ideas = trotskyite_plot_purged
+		}
+		remove_ideas = mikhail_kalinin
+		remove_ideas = ivan_konev
+		remove_unit_leader = 408
+		remove_ideas = pavel_zhigarev
+		remove_ideas = stepan_krasovsky
+		remove_ideas = arseniy_golovko
+		remove_unit_leader = 409
+		remove_ideas = georgy_zhukov
+		remove_unit_leader = 410
+		remove_ideas = sergey_gorshkov
+		remove_unit_leader = 411
+		remove_ideas = sergei_rudenko
+		remove_ideas = nikita_khrushchev
+		remove_ideas = konstantin_rodzaevsky
+		hidden_effect = {
+			news_event = { hours = 6 id = anarchy.41 }
+		}
+	}
+}
+
+# france: support the left
+country_event = {
+	id = anarchy.20
+	title = anarchy.20.t
+	desc = anarchy.20.d
+	picture = GFX_report_event_worker_protests
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = anarchy.20.a
+		add_ideas = FRA_libsoc
+		
+		ai_chance = {
+			factor = 1000
+			modifier = {
+				factor = 0                
+				has_government = communism
+			}
+			modifier = {
+				factor = 10
+				has_idea = SOV_funding_anarchists
+			}
+		}
+	}
+	
+	option = { # marxism
+		name = anarchy.20.b
+		add_ideas = FRA_support_the_left_focus
+		
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0                
+				has_government = libsoc
+			}
+		}
+	}
+}
+
+# soviet union: gulag for anarchists
+country_event = {
+	id = anarchy.21
+	title = anarchy.21.t
+	desc = anarchy.21.d
+	picture = GFX_report_event_soviet_tank_parade
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = SOV
+		has_government = communism
+		NOT = { has_idea = gulags_for_political_opponents }
+		OR = {
+			has_completed_focus = SOV_great_purge
+			AND = {
+				NOT = { has_completed_focus = SOV_great_purge }
+				focus_progress = {
+					focus = SOV_great_purge
+					progress > 0.01
+				}
+			}
+		}
+		libsoc > 0.10
+	}
+	
+	mean_time_to_happen = {
+		days = 31
+	}
+	
+	# TODO: add modifier if they are going anarchist
+	option = {
+		name = anarchy.21.a
+		add_ideas = gulags_for_political_opponents
+		
+		ai_chance = {
+			factor = 99
+			
+		}
+	}
+	
+	option = {
+		name = anarchy.21.b
+		
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}	
+	}
+	
+	option = { # we must encourage this kind of discussion
+		name = anarchy.21.c
+		
+		set_country_flag = SOV_on_libsoc_path
+		
+		add_popularity = {
+			ideology = libsoc
+			popularity = 0.10
+		}
+		
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+
+# USA goes communist
+country_event = {
+	id = anarchy.22
+	title = anarchy.22.t
+	desc = anarchy.22.d
+	picture = GFX_report_event_soviet_tank_parade
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = USA
+		has_government = communism
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	# Norman Thomas
+	option = {
+		name = anarchy.22.a
+	}
+	
+	# Earl Browder
+	option = {
+		name = anarchy.22.b
+		hidden_effect = {
+			retire_country_leader = yes
+			set_party_name = { ideology = communism long_name = USA_stalinism_party_long name = USA_stalinism_party }
+		}
+	}
+}
+
+# japan: anarchist korea rebels, war or no war? (if libsoc > 20%)
+country_event = {
+	id = anarchy.23
+	title = anarchy.23.t
+	desc = anarchy.23.d
+	picture = GFX_report_event_japanese_officers
+	
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = { # they are not worth the trouble
+		name = anarchy.23.a
+		release = KOR
+		
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+			}
+		}
+		
+		hidden_effect = {
+			KOR = {
+				add_popularity = {
+					ideology = libsoc
+					popularity = 0.30
+				}
+			}
+		}
+	}
+	
+	option = { # let us reconquer them
+		name = anarchy.23.b
+		
+		ai_chance = {
+			factor = 90
+		}
+		
+		release = KOR
+		hidden_effect = {
+			KOR = {
+				add_popularity = {
+					ideology = libsoc
+					popularity = 0.30
+				}
+				load_oob = "KOR_revolt_japan"
+			}
+		}
+		declare_war_on = { target = KOR type = annex_everything }
+		custom_effect_tooltip = anarchy.23.b.tt
+	}
+}
+
+# Indian independence if socialist
+country_event = {
+	id = anarchy.24
+	title = anarchy.24.t
+	desc = anarchy.24.d
+	picture = GFX_report_event_worker_protests
+
+	fire_only_once = yes
+	
+	trigger = {
+		original_tag = RAJ
+		has_government = libsoc
+		is_puppet_of = ENG
+		has_country_flag = indian_black_army
+		has_civil_war = no
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = anarchy.26.a
+		ENG = { end_puppet = RAJ }
+		ENG = { remove_from_faction = RAJ }
+	}
+}
+
+# SOV liberty focus
+country_event = {
+	id = anarchy.25
+	title = anarchy.25.t
+	desc = anarchy.25.d
+	picture = GFX_report_event_worker_protests
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = anarchy.25.a
+		add_ideas = SOV_republican_focus
+		
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 100
+				has_government = democratic
+			}
+		}
+	}
+
+	option = {
+		name = anarchy.25.b
+		add_ideas = libsoc_internationalism
+		
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 100
+				has_government = libsoc
+			}
+		}
+	}
+}
+
+# random election event
+country_event = {
+	id = anarchy.26
+	title = anarchy.26.t
+	desc = anarchy.26.d
+	picture = GFX_report_event_worker_protests
+	
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { tag = USA }
+		OR = { NOT = { tag = SPR } NOT = { date < 1937.1.1 } }
+		has_government = democratic
+		NOT = { has_idea = libsoc_defeated }
+		libsoc > 0.15
+	}
+	
+	option = {
+		name = anarchy.26.a
+		add_popularity = {
+			ideology = libsoc
+			popularity = 0.1
+		}
+		set_country_flag = coalition_with_libsoc
+	}
+
+	option = {
+		name = anarchy.26.b
+		add_stability = -0.05
+		set_country_flag = government_declined_libsoc
+	}
+}
+
+# random election event
+country_event = {
+	id = anarchy.27
+	title = anarchy.27.t
+	desc = anarchy.27.d
+	picture = GFX_report_event_worker_protests
+	
+	mean_time_to_happen = {
+		days = 730
+	}
+
+	trigger = {
+		NOT = { tag = USA }
+		OR = { NOT = { tag = SPR } NOT = { date < 1937.1.1 } }
+		has_government = democratic
+		has_country_flag = coalition_with_libsoc
+		any_other_country = {
+			has_government = libsoc
+			is_faction_leader = yes
+		}
+	}
+	
+	option = {
+		name = anarchy.27.a
+		random_country = {
+			limit = {
+				has_government = libsoc
+				is_faction_leader = yes
+			}
+			add_opinion_modifier = {
+				target = ROOT
+				modifier = communists_in_government
+			}
+		}
+	}
+
+	option = {
+		name = anarchy.27.b
+		add_stability = -0.05
+	}
+}
+
+# anarchist majority
+country_event = {
+	id = anarchy.28
+	title = anarchy.28.t
+	desc = anarchy.28.d
+	picture = GFX_report_event_gathering_protest
+	
+	is_triggered_only = yes
+
+	trigger = {
+		has_government = democratic
+		libsoc > 0.5
+		is_puppet = no
+	}
+	
+	option = {
+		name = anarchy.28.a
+		set_politics = {
+			ruling_party = libsoc
+			elections_allowed = no
+		}
+	}
+
+	option = {
+		name = anarchy.28.b
+		start_civil_war = {
+			ideology = libsoc
+			size = 0.5
+		}
+	}
+}
+
+# ask POL, CZE, and YUG to join Panslavic Union
+country_event = {
+	id = anarchy.29
+	title = anarchy.29.t
+	desc = anarchy.29.d
+	picture = GFX_event_coronation_of_king
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = anarchy.29.a
+		SOV = { add_to_faction = ROOT }
+		
+		ai_chance = { 
+			factor = 10 
+			modifier = {
+				is_in_faction = yes
+				factor = 0
+			}
+		}
+	}
+
+	option = {
+		name = anarchy.29.b
+	}
+}
+
+# TODO: EVENT 30, 31 is free
+
+# USA anarchist pacifism
+country_event = {
+	id = anarchy.32
+	title = anarchy.32.t
+	desc = anarchy.32.d
+	picture = GFX_event_iww
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = anarchy.32.a
+	}
+	option = {
+		name = anarchy.32.b
+		create_country_leader = {
+			name = "Dorothy Day"
+			desc = "POLITICS_DORTHY_DAY_DESC"
+			picture = "Portrait_USA_Socialism.dds"
+			expire = "1965.1.1"
+			ideology = anarcho_pacifism
+			traits = {
+				pacifist_leader
+			}
+		}
+	}
+}
+
+# USA militant anarchism
+country_event = {
+	id = anarchy.33
+	title = anarchy.33.t
+	desc = anarchy.33.d
+	picture = GFX_event_iww
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = anarchy.33.a
+	}
+	option = {
+		name = anarchy.33.b
+		create_country_leader = {
+			name = "Lucy Parsons"
+			desc = "POLITICS_LUCY_PARSONS_DESC"
+			picture = "Portrait_USA_Socialism_3.dds"
+			expire = "1965.1.1"
+			ideology = anarchist_communism
+			traits = {
+				union_leader
+			}
+		}
+	}
+}
+
+# USA Labor Day
+country_event = {
+	id = anarchy.34
+	title = anarchy.34.t
+	desc = anarchy.34.d
+	picture = GFX_event_iww
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	trigger = {		
+		has_country_flag = usa_labor_day
+		OR = {
+			AND = {
+				date > 1936.4.30
+				date < 1936.5.3
+			}
+			AND = {
+				date > 1937.4.30
+				date < 1937.5.3
+			}
+			AND = {
+				date > 1938.4.30
+				date < 1938.5.3
+			}
+			AND = {
+				date > 1939.4.30
+				date < 1939.5.3
+			}
+			AND = {
+				date > 1940.4.30
+				date < 1940.5.3
+			}
+			AND = {
+				date > 1941.4.30
+				date < 1941.5.3
+			}
+			AND = {
+				date > 1942.4.30
+				date < 1942.5.3
+			}
+			AND = {
+				date > 1943.4.30
+				date < 1943.5.3
+			}
+			AND = {
+				date > 1944.4.30
+				date < 1944.5.3
+			}
+			AND = {
+				date > 1945.4.30
+				date < 1945.5.3
+			}
+			AND = {
+				date > 1946.4.30
+				date < 1946.5.3
+			}
+			AND = {
+				date > 1947.4.30
+				date < 1947.5.3
+			}
+			AND = {
+				date > 1948.4.30
+				date < 1948.5.3
+			}
+			AND = {
+				date > 1949.4.30
+				date < 1949.5.3
+			}
+			AND = {
+				date > 1950.4.30
+				date < 1950.5.3
+			}
+		}
+	}
+	
+	option = {
+		name = anarchy.34.a
+		add_popularity = {
+			ideology = libsoc
+			popularity = 0.02
+		}
+	}
+}
+
+# Anarchists Execute Coup
+country_event = {
+	id = anarchy.35
+	title = anarchy.7.t
+	desc = anarchy.7.d
+	picture = GFX_report_event_gathering_protest
+	
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = { 
+			remove_ideas = libsoc_revolutionaries 
+			remove_ideas = idea_generic_general_strike
+		}
+	}
+	
+	option = {
+		name = anarchy.7.a
+		set_politics = {
+			ruling_party = libsoc
+			elections_allowed = no
+		}
+		add_timed_idea = { idea = complete_anarchy days = 730 } 
+	}
+}
+
+# Reinvite anarchists to international
+country_event = {
+	id = anarchy.36
+	title = anarchy.36.t
+	desc = anarchy.36.d
+	
+	picture = GFX_event_communist_international
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = anarchy.36.a
+		SOV = { add_to_faction = ROOT }
+		
+		ai_chance = {
+			factor = 10
+		}
+	}
+	
+	option = {
+		name = anarchy.36.b
+	}
+}
+
+# Lenin's Burial
+country_event = {
+	id = anarchy.37
+	title = anarchy.37.t
+	desc = anarchy.37.d
+	
+	picture = GFX_report_event_generic_funeral
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = anarchy.37.a
+		hidden_effect = {
+			news_event = { hours = 6 id = anarchy.38 } # bury with mother
+		}
+	}
+	
+	option = {
+		name = anarchy.37.b
+		hidden_effect = {
+			news_event = { hours = 6 id = anarchy.39 } # bury in unmarked grave
+		}
+	}
+	
+	option = {
+		name = anarchy.37.c
+		hidden_effect = {
+			news_event = { hours = 6 id = anarchy.40 } # cremate
+		}
+	}
+}
+
+# World Event: Lenin's Burial (with mother)
+news_event = {
+	id = anarchy.38
+	title = anarchy.38.t
+	desc = anarchy.38.d
+	picture = GFX_news_event_lenin_bury
+
+	major = yes
+
+	is_triggered_only = yes
+	
+	# Hmm...
+	option = {
+		name = anarchy.38.a
+	}
+}
+
+# World Event: Lenin's Burial (unmarked grave)
+news_event = {
+	id = anarchy.39
+	title = anarchy.38.t
+	desc = anarchy.39.d
+	picture = GFX_news_event_lenin_bury
+
+	major = yes
+
+	is_triggered_only = yes
+	
+	# Hmm...
+	option = {
+		name = anarchy.38.a
+	}
+}
+
+# World Event: Lenin's Burial (cremation)
+news_event = {
+	id = anarchy.40
+	title = anarchy.40.t
+	desc = anarchy.40.d
+	picture = GFX_news_event_lenin_bury
+
+	major = yes
+
+	is_triggered_only = yes
+	
+	# Hmm...
+	option = {
+		name = anarchy.38.a
+	}
+}
+# World Event: Stalin Resigns
+news_event = {
+	id = anarchy.41
+	title = anarchy.41.t
+	desc = anarchy.41.d
+	picture = GFX_news_event_stalin_resigns
+
+	major = yes
+
+	is_triggered_only = yes
+	
+	# Hmm...
+	option = {
+		name = anarchy.38.a
+	}
+}
+
+
+# Anarchist Sympathies in Government
+country_event = {
+	id = anarchy.42
+	title = anarchy.6.t
+	desc = anarchy.6.d
+	picture = GFX_event_iww
+
+	is_triggered_only = yes
+	
+	option = {
+		name = anarchy.6.a
+		add_ideas = idea_generic_general_strike
+	}
+}
+
+country_event = {
+	id = anarchy.43
+	title = anarchy.43.t
+	desc = anarchy.43.d
+	picture = GFX_report_event_communist_leader
+
+	trigger = {
+		has_government = libsoc
+		NOT = { has_idea = SPR_collectivized_society }
+		NOT = { original_tag = SPR }
+	}
+
+	mean_time_to_happen = { days = 30 }
+
+	option = {
+		name = anarchy.43.a
+		add_ideas = SPR_collectivized_society
+		ai_chance = { factor = 10 }
+	}
+}
+
+country_event = {
+	id = anarchy.44
+	title = anarchy.44.t
+	desc = anarchy.44.d
+	picture = GFX_report_event_communist_leader
+
+	trigger = {
+		NOT = { has_government = libsoc }
+		has_idea = SPR_collectivized_society
+	}
+
+	mean_time_to_happen = { days = 30 }
+
+	option = {
+		name = anarchy.43.a
+		add_ideas = free_trade
+		ai_chance = { factor = 10 }
+	}
+}
+
+# Idea
+# ukrainians get annoyed and rebel, high mtth
+# lower mtth if ( have_idea = gulags_for_political_opponents ), lower again if ( libsoc > 0.2 ) 
+# really high mtth if has_country_flag = SOV_on_libsoc_path

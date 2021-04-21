@@ -1,0 +1,22 @@
+ideas = {
+
+	country = {
+		IRE_dynastic_ties = {
+			
+			allowed = {
+				always = no
+			}
+			
+			removal_cost = -1
+			
+			allowed_civil_war = {
+				always = no
+			}
+			
+			modifier = {
+			}
+			
+			picture = GFX_idea_ire_dynastic_ties
+		}
+	}
+}

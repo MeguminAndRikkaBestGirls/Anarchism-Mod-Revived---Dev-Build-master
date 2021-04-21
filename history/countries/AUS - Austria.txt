@@ -1,0 +1,109 @@
+﻿capital = 4
+
+oob = "AUS_1936"
+
+set_research_slots = 3
+
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	tech_recon = 1
+	tech_engineers = 1
+	tech_support = 1		
+	tech_mountaineers = 1
+	early_fighter = 1
+}
+
+set_politics = {
+	ruling_party = fascism
+	last_election = "19309.11.9"
+	election_frequency = 48
+	elections_allowed = no
+}
+set_popularities = {
+	democratic = 1
+	fascism = 50
+	communism = 0
+	libsoc = 1
+	monarchism = 0
+	neutrality = 48
+}
+
+set_stability = 0.50
+
+create_country_leader = {
+	name = "Kurt Schuschnigg"
+	desc = "POLITICS_KURT_SCHUSCHNIGG_DESC"
+	picture = "Portrait_Austria_Kurt_Schuschnigg.dds"
+	expire = "1965.1.1"
+	ideology = clerical_fascism
+	traits = {
+		#
+	}
+}
+
+create_country_leader = {
+	name = "Maria Emhart"
+	desc = "POLITICS_MARIA_EMHART_DESC"
+	picture = "Portrait_AUS_Socialism.dds"
+	expire = "1965.1.1"
+	ideology = council_communism
+	traits = {
+		#
+	}
+}
+
+create_country_leader = {
+	name = "Otto von Habsburg"
+	desc = ""
+	picture = GFX_Portrait_hungary_otto_von_hapsburg
+	expire = "1965.1.1"
+	ideology = kaiser
+	traits = {
+		#
+	}
+}
+
+create_country_leader = {
+	name = "Karl Renner"
+	desc = "POLITICS_KARL_RENNER_DESC"
+	picture = "gfx/leaders/Europe/Portrait_Europe_Generic_2.dds"
+	expire = "1965.1.1"
+	ideology = socialism
+	traits = {
+		#
+	}
+}
+
+create_country_leader = {
+	name = "Alfred Klahr"
+	desc = "POLITICS_ALFRED_KLAHR_DESC"
+	picture = "gfx/leaders/Europe/Portrait_Europe_Generic_land_3.dds"
+	expire = "1965.1.1"
+	ideology = marxism
+	traits = {
+		#
+	}
+}
+
+create_country_leader = {
+	name = "Leopold Figl"
+	desc = ""
+	picture = "gfx/leaders/Europe/Portrait_Europe_Generic_land_1.dds"
+	expire = "1965.1.1"
+	ideology = centrism
+	traits = {
+		#
+	}
+}
+
+create_corps_commander = {
+	name = "Karl Eglseer"
+	portrait_path = "gfx/leaders/Europe/Portrait_Europe_Generic_land_2.dds"
+	traits = { trait_mountaineer trickster }
+	skill = 3
+	attack_skill = 2
+	defense_skill = 3
+	planning_skill = 3
+	logistics_skill = 2
+}

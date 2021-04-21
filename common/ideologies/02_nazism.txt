@@ -1,0 +1,50 @@
+ideologies = {
+
+	nazism_ideology = {
+		
+		types = {
+			
+			nazism = {
+			}
+
+			esoteric_nazism = {
+			}
+		}
+		
+		dynamic_faction_names = {
+			"FACTION_NAME_FASCIST_1"
+			"FACTION_NAME_FASCIST_2"
+			"FACTION_NAME_FASCIST_3"
+			"FACTION_NAME_FASCIST_4"
+			"FACTION_NAME_FASCIST_5"
+		}
+
+		color = { 28 28 28 }
+		
+		war_impact_on_world_tension = 1
+		faction_impact_on_world_tension = 1
+		
+		rules = {
+			can_guarantee_other_ideologies = yes
+			can_force_government = yes
+			can_send_volunteers = yes
+			can_puppet = yes
+			can_lower_tension = yes
+		}
+		
+		modifiers = {
+			justify_war_goal_when_in_major_war_time = -0.90
+			join_faction_tension = 0.5
+			fascism_acceptance = 60
+			army_intel_to_others = 7.5
+			navy_intel_to_others = 12.5
+			airforce_intel_to_others = 7.5
+			hidden_modifier = { join_faction_tension = -0.1 }
+		}
+
+		ai_fascist = yes
+		
+	}
+
+
+}

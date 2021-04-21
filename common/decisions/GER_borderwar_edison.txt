@@ -1,0 +1,41 @@
+SS_rhine = {
+	SS_storm_the_rhine_decision = {
+
+		icon = generic_prepare_civil_war
+		
+		fire_only_once = yes
+		
+		cost = 100
+		
+		complete_effect = {
+			
+			51 = {
+				set_demilitarized_zone = no
+			}
+			start_border_war = {
+				change_state_after_war = no
+				attacker = {
+					state = 51 # Rhineland
+					num_provinces = 2
+					on_win = ss.22
+					on_lose = ss.23
+					on_cancel = ss.24
+				}
+							
+				defender = {
+					state = 28 # Alsace Lorraine
+					num_provinces = 2
+					on_win = ss.25
+					on_lose = ss.26
+					on_cancel = ss.27
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 30
+		}
+	}
+	
+	
+}

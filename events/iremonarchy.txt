@@ -1,0 +1,21 @@
+add_namespace = iremonarchy
+
+##Event: Irish-German Dynastic Ties
+country_event = {
+	id = iremonarchy.1
+	title = iremonarchy.1.title
+	desc = iremonarchy.1.desc
+	picture = event_irish_germany
+	is_triggered_only = yes
+	fire_only_once = yes
+		mean_time_to_happen = { 
+		days = 1
+	}
+	option = {
+		name = iremonarchy.1.a
+		ai_chance = { factor = 1}
+		GER = {give_guarantee= IRE}
+		IRE = {give_guarantee= GER}
+		add_ideas = IRE_dynastic_ties
+	}
+}

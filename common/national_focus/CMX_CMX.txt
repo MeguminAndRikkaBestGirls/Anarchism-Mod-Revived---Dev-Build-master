@@ -1,0 +1,524 @@
+focus_tree = {
+	id = CMX
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = CMX
+		}
+	}
+
+	continuous_focus_position = { x = 50 y = 1500 }
+
+	#Focus for Crush the State.
+	focus = {
+		id = CMX_crush_the_state
+		icon = GFX_focus_spr_crush_the_revolution
+		x = 23
+		y = 6
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { 
+			focus = CMX_in_those_days_israel_had_no_king_everyone_did_as_they_saw_fit 
+		}
+		prerequisite = { 
+			focus = CMX_forgive_athiests 
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	#Focus for Embrace Tradition
+	focus = {
+		id = CMX_embrace_tradition
+		icon = GFX_focus_mex_soldaderas
+		x = 12
+		y = 5
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { 
+			focus = CMX_but_peter_and_the_apostles_answered_we_must_obey_god_rather_than_men 
+			focus = CMX__honor_everyone_love_the_brotherhood_fear_god_honor_the_emperor 
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	#Focus for Decide on an Emperor.
+	focus = {
+		id = CMX_decide_on_an_emperor
+		icon = GFX_focus_generic_monarchy_1
+		x = 8
+		y = 6
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { 
+			focus = CMX__honor_everyone_love_the_brotherhood_fear_god_honor_the_emperor 
+		}
+		prerequisite = { 
+			focus = CMX_embrace_tradition 
+		}
+		prerequisite = { 
+			focus = CMX_reeducate_atheists 
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	#Focus for Invite American Catholics,
+	focus = {
+		id = CMX_invite_american_catholics
+		icon = GFX_CMX_invite_american_catholics-4380
+		x = 0
+		y = 6
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { 
+			focus = CMX_the_wolf_shall_dwell_with_the_lamb 
+		}
+		prerequisite = { 
+			focus = CMX_reeducate_atheists 
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	#Focus for "But Peter and the apostles answered, “We must obey God rather than men."
+	focus = {
+		id = CMX_but_peter_and_the_apostles_answered_we_must_obey_god_rather_than_men
+		icon = GFX_goal_support_democracy
+		x = 16
+		y = 4
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { focus = CMX_in_the_beginning_god_created_the_heavens_and_the_earth }
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			has_government= democratic
+		}
+		completion_reward = { add_ideas = {ID = democratic_influence}
+		}
+	}
+
+	#Focus for " Honor everyone. Love the brotherhood. Fear God. Honor the emperor."
+	focus = {
+		id = CMX__honor_everyone_love_the_brotherhood_fear_god_honor_the_emperor
+		icon = GFX_focus_generic_monarchy_2
+		x = 8
+		y = 4
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { focus = CMX_in_the_beginning_god_created_the_heavens_and_the_earth }
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			has_government= monarchism
+		}
+		completion_reward = {}
+	}
+
+	#Focus for Re-educate Atheists
+	focus = {
+		id = CMX_reeducate_atheists
+		icon = GFX_goal_anti_comintern_pact
+		x = 4
+		y = 5
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { 
+			focus = CMX_the_wolf_shall_dwell_with_the_lamb 
+			focus = CMX__honor_everyone_love_the_brotherhood_fear_god_honor_the_emperor 
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	#Focus for "In the beginning, God created the heavens and the earth."
+	focus = {
+		id = CMX_in_the_beginning_god_created_the_heavens_and_the_earth
+		icon = GFX_goal_generic_national_unity
+		x = 5
+		y = 3
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { focus = CMX_then_who_can_be_against_us }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+		remove_ideas = {ID = SPR_death_before_surrender}
+		add_stability = 0.15
+		country_event = {ID = mexcatholic.1}
+		}
+		available = {NOT = {country_exists = MEX}}
+	}
+
+	#Focus for "Then who can be against us?"
+	focus = {
+		id = CMX_then_who_can_be_against_us
+		icon = GFX_focus_attack_mexico
+		x = 5
+		y = 2
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CMX_if_god_is_on_our_side }
+		ai_will_do = {
+			factor = 1
+		}
+		bypass = {
+			country_exists= MEX
+has_war_together_with= MEX
+		}
+		completion_reward = {
+			create_wargoal= { 
+type = annex_everything 
+target = MEX
+}
+		}
+	}
+
+	#Focus for "If God is on our side...."
+	focus = {
+		id = CMX_if_god_is_on_our_side
+		icon = GFX_focus_mex_restore_the_army_of_christ
+		x = 5
+		y = 1
+		cost = 5
+		available_if_capitulated = yes
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			load_oob = "CMX_uprising"
+		}
+	}
+
+	#Focus for "The wolf shall dwell with the lamb"
+	focus = {
+		id = CMX_the_wolf_shall_dwell_with_the_lamb
+		icon = GFX_goal_support_fascism
+		x = 0
+		y = 4
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { focus = CMX_in_the_beginning_god_created_the_heavens_and_the_earth }
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			has_government= fascism
+		}
+	}
+
+	#Focus for "In those days Israel had no king; everyone did as they saw fit."
+	focus = {
+		id = CMX_in_those_days_israel_had_no_king_everyone_did_as_they_saw_fit
+		icon = GFX_focus_spr_masters_of_our_own_fate
+		x = 23
+		y = 4
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { focus = CMX_in_the_beginning_god_created_the_heavens_and_the_earth }
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			has_government= libsoc
+		}
+	}
+
+	#Focus for Forgive Athiests.
+	focus = {
+		id = CMX_forgive_athiests
+		icon = GFX_goal_generic_national_unity
+		x = 20
+		y = 5
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { 
+			focus = CMX_in_those_days_israel_had_no_king_everyone_did_as_they_saw_fit 
+			focus = CMX_but_peter_and_the_apostles_answered_we_must_obey_god_rather_than_men 
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	#Focus for Restore Claims on Aztlan
+	focus = {
+		id = CMX_restore_claims_on_aztlan
+		icon = GFX_focus_mex_redeem_aztlan
+		x = 8
+		y = 7
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { focus = CMX_decide_on_an_emperor }
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	#Focus for Strike North!
+	focus = {
+		id = CMX_strike_north
+		icon = GFX_focus_spa_the_war_of_vengeance
+		x = 4
+		y = 8
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { 
+			focus = CMX_restore_claims_on_aztlan 
+			focus = CMX_prepare_for_the_10th_crusade 
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	#Focus for Embrace the new Revolution
+	focus = {
+		id = CMX_embrace_the_new_revolution
+		icon = GFX_focus_focus_fra_revolution_utmost
+		x = 23
+		y = 7
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { focus = CMX_crush_the_state }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			start_civil_war= {
+ ideology = fascism 
+size = 0.5 
+}
+		}
+	}
+
+	#Focus for Liberate the home of the papacy
+	focus = {
+		id = CMX_liberate_the_home_of_the_papacy
+		icon = GFX_focus_attack_italy
+		x = 16
+		y = 10
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { focus = CMX_end_the_fascist_menace }
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	#Focus for "Then I saw a new heaven and a new earth; for the first heaven and the first earth passed away"
+	focus = {
+		id = CMX_then_i_saw_a_new_heaven_and_a_new_earth_for_the_first_heaven_and_the_first_earth_passed_away
+		icon = GFX_focus_por_concordat
+		x = 12
+		y = 11
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { 
+			focus = CMX_revolutionary_spirit 
+		}
+		prerequisite = { 
+			focus = CMX_the_new_mexican_century 
+		}
+		prerequisite = { 
+			focus = CMX_liberate_the_home_of_the_papacy 
+		}
+		prerequisite = { 
+			focus = CMX_the_south_american_proclamation 
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	#Focus for Revolutionary Spirit
+	focus = {
+		id = CMX_revolutionary_spirit
+		icon = GFX_focus_spr_masters_of_our_own_fate
+		x = 23
+		y = 10
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { focus = CMX_crush_south_american_states }
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	#Focus for Tolerate different sects.
+	focus = {
+		id = CMX_tolerate_different_sects
+		icon = GFX_focus_mex_triumph_over_the_cristeros
+		x = 16
+		y = 6
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { 
+			focus = CMX_but_peter_and_the_apostles_answered_we_must_obey_god_rather_than_men 
+		}
+		prerequisite = { 
+			focus = CMX_forgive_athiests 
+		}
+		prerequisite = { 
+			focus = CMX_embrace_tradition 
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	#Focus for Prepare for the 10th Crusade!
+	focus = {
+		id = CMX_prepare_for_the_10th_crusade
+		icon = GFX_focus_spa_strengthen_the_supreme_reality_of_spain
+		x = 0
+		y = 7
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { focus = CMX_invite_american_catholics }
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	#Focus for Strike Sourth
+	focus = {
+		id = CMX_strike_sourth
+		icon = GFX_focus_generic_support_the_left_right
+		x = 4
+		y = 9
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { focus = CMX_strike_north }
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			has_offensive_war= no
+		}
+	}
+
+	#Focus for The South American Proclamation
+	focus = {
+		id = CMX_the_south_american_proclamation
+		icon = GFX_focus_por_recover_latin_america
+		x = 0
+		y = 10
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { 
+			focus = CMX_prepare_for_the_10th_crusade 
+		}
+		prerequisite = { 
+			focus = CMX_strike_sourth 
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	#Focus for The new Mexican Century.
+	focus = {
+		id = CMX_the_new_mexican_century
+		icon = GFX_focus_rom_royal_dictatorship
+		x = 8
+		y = 10
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { 
+			focus = CMX_restore_claims_on_aztlan 
+		}
+		prerequisite = { 
+			focus = CMX_strike_sourth 
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	#Focus for Prepare to destroy evil
+	focus = {
+		id = CMX_prepare_to_destroy_evil
+		icon = GFX_focus_attack_germany
+		x = 16
+		y = 7
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { focus = CMX_tolerate_different_sects }
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	#Focus for Join the Allied powers
+	focus = {
+		id = CMX_join_the_allied_powers
+		icon = GFX_focus_focus_fra_ratify_stresa
+		x = 16
+		y = 8
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { focus = CMX_prepare_to_destroy_evil }
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	#Focus for End the fascist menace!
+	focus = {
+		id = CMX_end_the_fascist_menace
+		icon = GFX_focus_usa_focus_on_europe
+		x = 16
+		y = 9
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { focus = CMX_join_the_allied_powers }
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	#Focus for Destroy the North American States
+	focus = {
+		id = CMX_destroy_the_north_american_states
+		icon = GFX_focus_mex_caudillo_private_armies
+		x = 23
+		y = 8
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { focus = CMX_embrace_the_new_revolution }
+		ai_will_do = {
+			factor = 1
+		}
+		available = {
+			has_civil_war= no
+		}
+	}
+
+	#Focus for Crush South American States
+	focus = {
+		id = CMX_crush_south_american_states
+		icon = GFX_focus_por_latin_american_communism
+		x = 23
+		y = 9
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { focus = CMX_destroy_the_north_american_states }
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+#End of focuses 
+ }

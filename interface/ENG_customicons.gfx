@@ -1,0 +1,117 @@
+spriteTypes = { 
+	##Icon For: Inspire a Cult of Personality
+	SpriteType = { 
+		name = "GFX_ENG_inspire_a_cult_of_personality-10404"
+		texturefile = "gfx/interface/goals/GFX_ENG_inspire_a_cult_of_personality-10404.dds"
+	}
+
+	##Icon Shine For: Inspire a Cult of Personality
+	SpriteType = { 
+		name = "GFX_ENG_inspire_a_cult_of_personality-10404_shine"
+		texturefile = "gfx/interface/goals/GFX_ENG_inspire_a_cult_of_personality-10404.dds"
+		effectFile = "gfx/FX/buttonstate.lua"
+		animation = {
+			animationmaskfile = "gfx/interface/goals/GFX_ENG_inspire_a_cult_of_personality-10404.dds"
+			animationtexturefile = "gfx/interface/goals/shine_overlay.dds"
+			animationrotation = -90.0
+			animationlooping = no
+			animationtime = 0.75
+			animationdelay = 0
+			animationblendmode = "add"
+			animationtype = "scrolling"
+			animationrotationoffset = { x = 0.0 y = 0.0 }
+			animationtexturescale = { x = 1.0 y = 1.0 } 
+		}
+		animation = {
+			animationmaskfile = "gfx/interface/goals/GFX_ENG_inspire_a_cult_of_personality-10404.dds"
+			animationtexturefile = "gfx/interface/goals/shine_overlay.dds"
+			animationrotation = 90.0
+			animationlooping = no
+			animationtime = 0.75
+			animationdelay = 0
+			animationblendmode = "add"
+			animationtype = "scrolling"
+			animationrotationoffset = { x = 0.0 y = 0.0 }
+			animationtexturescale = { x = 1.0 y = 1.0 } 
+		}
+		legacy_lazy_load = no
+	}
+
+	##Icon For: The London Crisis
+	SpriteType = { 
+		name = "GFX_ENG_the_london_crisis-10694"
+		texturefile = "gfx/interface/goals/GFX_ENG_the_london_crisis-10694.dds"
+	}
+
+	##Icon Shine For: The London Crisis
+	SpriteType = { 
+		name = "GFX_ENG_the_london_crisis-10694_shine"
+		texturefile = "gfx/interface/goals/GFX_ENG_the_london_crisis-10694.dds"
+		effectFile = "gfx/FX/buttonstate.lua"
+		animation = {
+			animationmaskfile = "gfx/interface/goals/GFX_ENG_the_london_crisis-10694.dds"
+			animationtexturefile = "gfx/interface/goals/shine_overlay.dds"
+			animationrotation = -90.0
+			animationlooping = no
+			animationtime = 0.75
+			animationdelay = 0
+			animationblendmode = "add"
+			animationtype = "scrolling"
+			animationrotationoffset = { x = 0.0 y = 0.0 }
+			animationtexturescale = { x = 1.0 y = 1.0 } 
+		}
+		animation = {
+			animationmaskfile = "gfx/interface/goals/GFX_ENG_the_london_crisis-10694.dds"
+			animationtexturefile = "gfx/interface/goals/shine_overlay.dds"
+			animationrotation = 90.0
+			animationlooping = no
+			animationtime = 0.75
+			animationdelay = 0
+			animationblendmode = "add"
+			animationtype = "scrolling"
+			animationrotationoffset = { x = 0.0 y = 0.0 }
+			animationtexturescale = { x = 1.0 y = 1.0 } 
+		}
+		legacy_lazy_load = no
+	}
+
+	##Icon For: Transform Northern Ireland...
+	SpriteType = { 
+		name = "GFX_ENG_transform_northern_ireland-11406"
+		texturefile = "gfx/interface/goals/GFX_ENG_transform_northern_ireland-11406.dds"
+	}
+
+	##Icon Shine For: Transform Northern Ireland...
+	SpriteType = { 
+		name = "GFX_ENG_transform_northern_ireland-11406_shine"
+		texturefile = "gfx/interface/goals/GFX_ENG_transform_northern_ireland-11406.dds"
+		effectFile = "gfx/FX/buttonstate.lua"
+		animation = {
+			animationmaskfile = "gfx/interface/goals/GFX_ENG_transform_northern_ireland-11406.dds"
+			animationtexturefile = "gfx/interface/goals/shine_overlay.dds"
+			animationrotation = -90.0
+			animationlooping = no
+			animationtime = 0.75
+			animationdelay = 0
+			animationblendmode = "add"
+			animationtype = "scrolling"
+			animationrotationoffset = { x = 0.0 y = 0.0 }
+			animationtexturescale = { x = 1.0 y = 1.0 } 
+		}
+		animation = {
+			animationmaskfile = "gfx/interface/goals/GFX_ENG_transform_northern_ireland-11406.dds"
+			animationtexturefile = "gfx/interface/goals/shine_overlay.dds"
+			animationrotation = 90.0
+			animationlooping = no
+			animationtime = 0.75
+			animationdelay = 0
+			animationblendmode = "add"
+			animationtype = "scrolling"
+			animationrotationoffset = { x = 0.0 y = 0.0 }
+			animationtexturescale = { x = 1.0 y = 1.0 } 
+		}
+		legacy_lazy_load = no
+	}
+
+ 
+ }
